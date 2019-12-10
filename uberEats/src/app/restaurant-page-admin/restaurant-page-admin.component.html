@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Assignment 7 </title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="topnav">
+            <a href="/admin/homepage">UberEats</a>
+            <h2> Manage Restaurants </h2>
+            <button class="btn"><i class="fas fa-user"></i></button>
+            
+            
+          </div>
+          <div id="topnav2">
+            <ul>
+                <li><a class="a active" (click)="toggle('restaurant')">Restaurant</a></li>
+                <li><a class="a" (click)="toggle('analytics')">Analytics</a></li>
+                <li><a class="a" (click)="toggle('orders')">Orders</a></li>
+            </ul>
+            
+        </div>
+        <div *ngIf="restaurantpage">
+            <app-create-restaurant></app-create-restaurant>
+        </div>
+        <div *ngIf="orderspage">
+            <app-restaurant-orders-admin></app-restaurant-orders-admin>
+        </div>
+    </body>
+</html>
