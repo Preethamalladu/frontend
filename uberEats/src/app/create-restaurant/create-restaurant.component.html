@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Create Restaurant</h1>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="label" class="form-control" id="name" name="name" [ngModel]="restaurantdata.name" (ngModelChange)="restaurantdata.name = $event" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" name="description" [ngModel]="restaurantdata.description" (ngModelChange)="restaurantdata.description = $event">
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" name="address" [ngModel]="restaurantdata.address" (ngModelChange)="restaurantdata.address = $event">
+            </div>
+        
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" name="email" [ngModel]="restaurantdata.email" (ngModelChange)="restaurantdata.email = $event">
+            </div>
+        
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="number" class="form-control" id="phone" name="phone" [ngModel]="restaurantdata.phone" (ngModelChange)="restaurantdata.phone = $event">
+            </div>
+            <div class="form-group">
+                <label for="bg-img">Background Image</label>
+                <input type="text" class="form-control" id="bg-img" name="bg-img" [ngModel]="restaurantdata.bgimg" (ngModelChange)="restaurantdata.bgimg = $event">
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" class="form-control" id="location" name="location" [ngModel]="restaurantdata.location" (ngModelChange)="restaurantdata.location = $event">
+            </div>
+        
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" id="price" name="price" [ngModel]="restaurantdata.price" (ngModelChange)="restaurantdata.price = $event">
+            </div>
+            <div class="form-group">
+                <input type="file" class="upload" (change)="changeListener($event.target.files)">
+            </div>
+            <button type="submit" class="btn btn-success" (click)="createRestaurant()">Submit</button>
+            <div class="container">
+                <div>
+                    <h1>Menu Section</h1>
+                    <button type="submit" class="btn btn-success" (click)="createMenu()">Create Menu Item</button>
+                </div>
+                <div *ngFor="let m of menu; let in = index; trackBy: trackByFn" class="card">
+                    <div class="card-container">
+                            <!-- <input name="name" [(ngModel)]="m.name" (ngModelChange)="m.name = $event" />
+                            <p>{{m.name}}</p> -->
+                            <div>
+                                <label for="name">Name</label>
+                                <input type="text" name="name-{{in}}" class="form-control" [ngModel]="m.name" value="m.name" (ngModelChange)="m.name = $event" [disabled]="!m.edit">
+                            </div>
+                            <div>
+                                <label for="description">Description</label>
+                                <input type="text" name="description-{{in}}" class="form-control" [ngModel]="m.description" value="m.description" (ngModelChange)="m.description = $event" [disabled]="!m.edit">
+                            </div>
+                            <div>
+                                <label for="category">Category</label>
+                                <input type="text" name="category-{{in}}" class="form-control" [ngModel]="m.category" (ngModelChange)="m.category = $event" [disabled]="!m.edit">
+                            </div>
+                            
+                            <div>
+                                <label for="price">Price</label>
+                                <input type="number" name="price-{{in}}" class="form-control" [ngModel]="m.price" (ngModelChange)="m.price = $event" [disabled]="!m.edit">
+                            </div>
+                            <div>
+                                <label for="img">Image</label>
+                                <input type="text" name="img-{{in}}" class="form-control" [ngModel]="m.img" (ngModelChange)="m.img = $event" [disabled]="!m.edit">
+                            </div>
+                            <div>
+                                <label for="available">Available</label>
+                                <input type="checkbox" name="available-{{in}}" class="form-control" [ngModel]="m.isavailable" (ngModelChange)="m.isavailable = $event" [disabled]="!m.edit">
+                            </div>
+                            <div class="btndiv">
+                                <button type="submit" class="button btn btn-danger" (click)="delete(m)">Delete</button>
+                                <button type="submit" class="button btn btn-success" (click)="edit(m)">Edit</button>
+                                <button type="submit" class="button btn btn-success" (click)="update(m)">Submit</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+    </body>
+    </html>
+
+ 
