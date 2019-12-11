@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Router} from '@angular/router';
 import {NavbarcompComponent} from '../../navbarcart/navbarcomp/navbarcomp.component';
-
+// payment successful message display component and last of the line
 @Component({
   selector: 'app-successpayment',
   templateUrl: './successpayment.component.html',

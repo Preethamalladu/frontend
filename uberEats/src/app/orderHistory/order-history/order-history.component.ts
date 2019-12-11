@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {NavbarcompComponent} from '../../navbarcart/navbarcomp/navbarcomp.component'
 import { HttpClient } from '@angular/common/http';
 import { OrderHistoryService } from '../../order-history.service';
-
+// order history component for showing past orders. this uses router to redirect to order summary
 @Component({
   selector: 'app-order-history',
   templateUrl: './order-history.component.html',

@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {NavbarcompComponent} from '../../navbarcart/navbarcomp/navbarcomp.component'
 import {PaymentserviceService} from '../../paymentservice.service'
 import {OrderHistoryService} from '../../order-history.service'
+// payment component to save the order and payment objects
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',

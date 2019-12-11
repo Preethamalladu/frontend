@@ -4,7 +4,7 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {NavbarcompComponent} from '../../navbarcart/navbarcomp/navbarcomp.component'
 // import { runInThisContext } from 'vm';
-
+// order summary and order cart reusable component
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -39,7 +39,7 @@ export class OrdersComponent implements OnInit {
     console.log("test")
     this.recalculate(null);
   }
- 
+//  dynamic binding data
   recalculate(event){
     var sum=0;
     for( var i=0;i<this.data.length;i++){
