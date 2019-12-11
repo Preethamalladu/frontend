@@ -244,5 +244,8 @@ export class RestaurantHomeMenuComponent implements OnInit {
     console.log(localStorage.getItem("token"))
     this.router.navigateByUrl('/home');
   }
+  orderHistory(){
+    this.router.navigateByUrl('/orderHistory')
+  }
 
 }
