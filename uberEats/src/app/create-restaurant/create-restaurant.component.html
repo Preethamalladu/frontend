@@ -6,55 +6,80 @@
 <body>
     <div class="container">
         <h1>Create Restaurant</h1>
+        <div class = "img_place" [ngStyle]="{'background-image': 'url(' + restaurantdata.bgimg+ ')'}">
+                <div class="restaurant_info">
+        
+                <div class="rest_content">
+                        <div class = "name">
+                            Name
+                                {{restaurantdata.name}}
+        
+                            </div>
+                            <div class = 'price_rating'>
+                                <span>
+                                    Price 
+                                    {{restaurantdata.price}}&nbsp;•&nbsp; {{restaurantdata.type_of_food}}
+                                    
+                                </span>
+                            </div>
+                            <div class = rating_time_deliveryfee>
+                                <span>
+                                    rating and review
+                                    {{restaurantdata.rating}}&nbsp;<i class="fas fa-star"></i>
+                                    &nbsp;
+                                </span>
+                            </div>
+                </div>
+        
+                </div>
+            </div>
+        <form class="create-form">
+            <mat-form-field class="inputfield">
+                <input matInput placeholder="Restaurant Name" [(ngModel)]='restaurantdata.name' name='restaurantdata.name'>
+            </mat-form-field>
+        
+            <mat-form-field class="inputfield">
+                <input matInput placeholder="Food Category" [(ngModel)]='restaurantdata.type_of_food' name='restaurantdata.type_of_food'>
+            </mat-form-field>
+            <mat-form-field class="inputfield">
+                <input matInput placeholder="Address" [(ngModel)]='restaurantdata.address' name='restaurantdata.address'>
+            </mat-form-field>
+            
+            <mat-form-field class="inputfield">
+                <input matInput placeholder="Email" [(ngModel)]='restaurantdata.email' name='restaurantdata.email'>
+            </mat-form-field>
+    
+            <mat-form-field class="inputfield">
+                <input matInput placeholder="Phone" [(ngModel)]='restaurantdata.phone' name='restaurantdata.phone'>
+            </mat-form-field>
+            
+            <mat-form-field class="inputfield">
+                <input matInput placeholder="Background Image" [(ngModel)]='restaurantdata.bgimg' name='restaurantdata.bgimg'>
+            </mat-form-field>
+            <mat-form-field class="inputfield">
+                <input matInput placeholder="Location" [(ngModel)]='restaurantdata.location' name='restaurantdata.location'>
+            </mat-form-field>
+            
+            <mat-form-field class="inputfield">
+                <input matInput placeholder="Price" [(ngModel)]='restaurantdata.price' name='restaurantdata.price'>
+            </mat-form-field>
+            
+            
+            <!-- <br> -->
+            <button mat-raised-button class="resBtn" color="primary" (click)="createRestaurant()">Primary</button>
+
+        </form>
+
         <form>
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="label" class="form-control" id="name" name="name" [ngModel]="restaurantdata.name" (ngModelChange)="restaurantdata.name = $event" required>
-            </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <input type="text" class="form-control" id="description" name="description" [ngModel]="restaurantdata.description" (ngModelChange)="restaurantdata.description = $event">
-            </div>
-            <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" name="address" [ngModel]="restaurantdata.address" (ngModelChange)="restaurantdata.address = $event">
-            </div>
-        
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" name="email" [ngModel]="restaurantdata.email" (ngModelChange)="restaurantdata.email = $event">
-            </div>
-        
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="number" class="form-control" id="phone" name="phone" [ngModel]="restaurantdata.phone" (ngModelChange)="restaurantdata.phone = $event">
-            </div>
-            <div class="form-group">
-                <label for="bg-img">Background Image</label>
-                <input type="text" class="form-control" id="bg-img" name="bg-img" [ngModel]="restaurantdata.bgimg" (ngModelChange)="restaurantdata.bgimg = $event">
-            </div>
-            <div class="form-group">
-                <label for="location">Location</label>
-                <input type="text" class="form-control" id="location" name="location" [ngModel]="restaurantdata.location" (ngModelChange)="restaurantdata.location = $event">
-            </div>
-        
-            <div class="form-group">
-                <label for="price">Price</label>
-                <input type="number" class="form-control" id="price" name="price" [ngModel]="restaurantdata.price" (ngModelChange)="restaurantdata.price = $event">
-            </div>
-            <div class="form-group">
-                <input type="file" class="upload" (change)="changeListener($event.target.files)">
-            </div>
-            <button type="submit" class="btn btn-success" (click)="createRestaurant()">Submit</button>
+
             <div class="container">
                 <div>
                     <h1>Menu Section</h1>
-                    <button type="submit" class="btn btn-success" (click)="createMenu()">Create Menu Item</button>
+                    <button class="resBtn" type="submit" class="btn btn-success" (click)="createMenu()">Create Menu Item</button>
                 </div>
                 <div *ngFor="let m of menu; let in = index; trackBy: trackByFn" class="card">
+                     
                     <div class="card-container">
-                            <!-- <input name="name" [(ngModel)]="m.name" (ngModelChange)="m.name = $event" />
-                            <p>{{m.name}}</p> -->
                             <div>
                                 <label for="name">Name</label>
                                 <input type="text" name="name-{{in}}" class="form-control" [ngModel]="m.name" value="m.name" (ngModelChange)="m.name = $event" [disabled]="!m.edit">
@@ -76,10 +101,11 @@
                                 <label for="img">Image</label>
                                 <input type="text" name="img-{{in}}" class="form-control" [ngModel]="m.img" (ngModelChange)="m.img = $event" [disabled]="!m.edit">
                             </div>
-                            <div>
+                            <mat-checkbox class="checkbox" name="available-{{in}}" [ngModel]="m.isavailable" (ngModelChange)="m.isavailable = $event" [disabled]="!m.edit" >Available</mat-checkbox>
+                            <!-- <div>
                                 <label for="available">Available</label>
                                 <input type="checkbox" name="available-{{in}}" class="form-control" [ngModel]="m.isavailable" (ngModelChange)="m.isavailable = $event" [disabled]="!m.edit">
-                            </div>
+                            </div> -->
                             <div class="btndiv">
                                 <button type="submit" class="button btn btn-danger" (click)="delete(m)">Delete</button>
                                 <button type="submit" class="button btn btn-success" (click)="edit(m)">Edit</button>

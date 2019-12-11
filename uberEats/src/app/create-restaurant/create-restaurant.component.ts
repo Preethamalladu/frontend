@@ -11,20 +11,38 @@ export class CreateRestaurantComponent implements OnInit {
   menu=[]
   restaurant_id = ""
   menutemplate = {"name":"a","category":"","isavalable":false,"price":"","edit":true};
-  restaurantdata = {}
+  restaurantdata = {"bgimg":"https://images.unsplash.com/photo-1553964274-ac6059a35745?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"}
+  lat = 0;
+  long = 0;
   constructor(private restaurantAdminService:RestaurantAdminService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    
     this.restaurant_id = this.route.snapshot.paramMap.get('id');
     console.log(this.restaurant_id);
     if(this.restaurant_id){
-      this.restaurantAdminService.getRestaurantByID(this.restaurant_id).subscribe((data: any[])=>{
+      this.restaurantAdminService.getRestaurantByID(this.restaurant_id).subscribe((data: any)=>{
         this.restaurantdata = data;
-        this.restaurantdata['location'] = this.restaurantdata['loc']['coordinates'].join(',')
-        console.log(this.restaurantdata);
+        this.getLocation();
+        
       })
+      
       this.getMenu();
     }
+    else{
+      this.getLocation();
+      this.getMenu();
+    }
+  }
+  getLocation(){
+    this.restaurantAdminService.getPosition().then(pos=>
+      {
+         this.long = pos.lng
+         this.lat = pos.lat;
+         this.restaurantdata["loc"] = {type:"Point","coordinates":[this.long,this.lat]}
+         this.restaurantdata['location'] = this.restaurantdata['loc']['coordinates'].join(',')
+         console.log(this.restaurantdata);
+        });
   }
   getMenu(){
     this.restaurantAdminService.getMenuByRestaurant(this.restaurant_id).subscribe((data: any[])=>{
@@ -65,10 +83,17 @@ export class CreateRestaurantComponent implements OnInit {
       coordinates: this.restaurantdata['location'].split(",")
     };
     console.log(this.restaurantdata)
+    if(!("_id" in this.restaurantdata)){
     this.restaurantAdminService.createRestaurant(this.restaurantdata).subscribe((data: any[])=>{
-      console.log(data);
+      this.restaurantdata["_id"] = data['_id'];
       this.restaurant_id = data["_id"];
-    })  
+    })  }
+    else{
+      this.restaurantAdminService.editRestaurant(this.restaurantdata["_id"],this.restaurantdata).subscribe((data: any[])=>{
+        console.log(data);
+        this.restaurant_id = data["_id"];
+      }) 
+    }
   }
   createMenu(){
     
