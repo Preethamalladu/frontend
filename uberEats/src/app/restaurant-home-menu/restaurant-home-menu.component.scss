@@ -32,9 +32,11 @@ body {
   }
 
   .sign {
+    padding-top: 8px;
     float: right;
     margin-top: 5px;
     font-size: 24px;
+    cursor: pointer;
   }
 
 }
@@ -335,6 +337,12 @@ body {
         }
         .orders {
           font-size: 24px ;
+          display: flex;
+          .order_name {
+            width: 100px;
+            overflow: hidden;
+            
+          }
           .order_price {
             margin-left: 30%;
             font-size: 20px;
@@ -342,6 +350,7 @@ body {
           .order_remove {
             margin-left: 20%;
           }
+          
         }
     }
 

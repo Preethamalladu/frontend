@@ -87,7 +87,7 @@ import { RestaurantHomeMenuComponent } from './restaurant-home-menu/restaurant-h
         path: 'orderSummary', 
         component: OrdersComponent,
         pathMatch:"full",
-        data: [{ name: 'Heroes List' },{ name: 'Heroes List' },{ name: 'Heroes List' },{ name: 'Heroes List' }]
+        // data: [{ name: 'Heroes List' },{ name: 'Heroes List' },{ name: 'Heroes List' },{ name: 'Heroes List' }]
       },
       {
         path: 'orderHistory', 

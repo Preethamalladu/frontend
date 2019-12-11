@@ -11,87 +11,88 @@ import { RestaurantServiceService } from '../restaurant-service.service'
 })
 export class RestaurantHomeMenuComponent implements OnInit {
   private routeSub: Subscription;
-  menu_data = [
-    {
-      _id: "biyani",
-      menu:[
-        {
-          name: "name",
-          description: "desc",
-          img: "https://picsum.photos/200",
-          price: 10,
-          isavailable: false
-        },
-        {
-          name: "name",
-          description: "desc",
-          img: "https://picsum.photos/200",
-          price: 10,
-          isavailable: false
-        },
-        {
-          name: "name",
-          description: "desc",
-          img: "https://picsum.photos/200",
-          price: 10,
-          isavailable: false
-        },
-      ]
-    },
-    {
-      _id: "giyani",
-      menu:[
-        {
-          name: "name",
-          description: "desc",
-          img: "https://picsum.photos/200",
-          price: 10,
-          isavailable: false
-        },
-        {
-          name: "name",
-          description: "desc",
-          img: "https://picsum.photos/200",
-          price: 10,
-          isavailable: true
-        },
-        {
-          name: "name",
-          description: "desc",
-          img: "https://picsum.photos/200",
-          price: 10,
-          isavailable: false
-        },
-      ]
-    },
-    {
-      _id: "biyani",
-      menu:[
-        {
-          name: "name",
-          description: "desc",
-          img: "https://picsum.photos/200",
-          price: 10,
-          isavailable: true
-        },
-        {
-          name: "name",
-          description: "desc",
-          img: "https://picsum.photos/200",
-          price: 10,
-          isavailable: false
-        },
-        {
-          name: "namasdasdsade",
-          description: "desc",
-          img: "https://picsum.photos/200",
-          price: 10,
-          isavailable: true
-        },
-      ]
-    }
+  // menu_data = [
+  //   {
+  //     _id: "biyani",
+  //     menu:[
+  //       {
+  //         name: "name",
+  //         description: "desc",
+  //         img: "https://picsum.photos/200",
+  //         price: 10,
+  //         isavailable: false
+  //       },
+  //       {
+  //         name: "name",
+  //         description: "desc",
+  //         img: "https://picsum.photos/200",
+  //         price: 10,
+  //         isavailable: false
+  //       },
+  //       {
+  //         name: "name",
+  //         description: "desc",
+  //         img: "https://picsum.photos/200",
+  //         price: 10,
+  //         isavailable: false
+  //       },
+  //     ]
+  //   },
+  //   {
+  //     _id: "giyani",
+  //     menu:[
+  //       {
+  //         name: "name",
+  //         description: "desc",
+  //         img: "https://picsum.photos/200",
+  //         price: 10,
+  //         isavailable: false
+  //       },
+  //       {
+  //         name: "name",
+  //         description: "desc",
+  //         img: "https://picsum.photos/200",
+  //         price: 10,
+  //         isavailable: true
+  //       },
+  //       {
+  //         name: "name",
+  //         description: "desc",
+  //         img: "https://picsum.photos/200",
+  //         price: 10,
+  //         isavailable: false
+  //       },
+  //     ]
+  //   },
+  //   {
+  //     _id: "biyani",
+  //     menu:[
+  //       {
+  //         name: "name",
+  //         description: "desc",
+  //         img: "https://picsum.photos/200",
+  //         price: 10,
+  //         isavailable: true
+  //       },
+  //       {
+  //         name: "name",
+  //         description: "desc",
+  //         img: "https://picsum.photos/200",
+  //         price: 10,
+  //         isavailable: false
+  //       },
+  //       {
+  //         name: "namasdasdsade",
+  //         description: "desc",
+  //         img: "https://picsum.photos/200",
+  //         price: 10,
+  //         isavailable: true
+  //       },
+  //     ]
+  //   }
 
-  ]
+  // ]
+  menu_data = [];
   menu_id = 0;
   cart_data = []
   total_price = 0.0
@@ -126,6 +127,13 @@ export class RestaurantHomeMenuComponent implements OnInit {
     }
 
     //get menu by restId
+    this.rest.getMenubyRestId(this.menu_id).subscribe((data: any[]) => {
+
+      this.menu_data = data;
+
+    })
+
+
     this.rest.getRestByid(this.menu_id).subscribe((data: any[]) => {
       
       this.cur_rest = data;
@@ -210,6 +218,8 @@ export class RestaurantHomeMenuComponent implements OnInit {
     var send_out = [] ;
     var name = {};
     var price = {};
+    var cat = {};
+    var rest_id ;
     this.cart_data.forEach(element => {
       if (!(element["name"] in name)){
         name[element["name"]] = 1;
@@ -217,15 +227,22 @@ export class RestaurantHomeMenuComponent implements OnInit {
         name[element["name"]] += 1;
       }
       price[element["name"]] = element["price"]
+      cat[element["name"]] = element["category"]
+      rest_id = element["restaurant_id"]
     });
 
     Object.keys(name).forEach(function(key){
-      send_out.push({"name":key, "price":price[key], "quantity":name[key]})
+      send_out.push({"name":key, "price":price[key], "quantity":name[key], "category":cat[key], "restauantId":rest_id})
     })
 
     this.router.navigateByUrl('/orderSummary', {state:{isPayment:true, data:send_out}});
 
     
+  }
+  signout(){
+    localStorage.removeItem("token");
+    console.log(localStorage.getItem("token"))
+    this.router.navigateByUrl('/home');
   }
 
 }
