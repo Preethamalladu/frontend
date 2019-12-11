@@ -25,6 +25,7 @@ export class RestaurantOrdersAdminComponent implements OnInit {
 
 
   }
+  // toggle between events
   toggle(val){
     if(val=='upcoming'){
       this.pendingtoggle=false;this.upcomingtoggle=true;this.pasttoggle=false;
@@ -49,6 +50,7 @@ export class RestaurantOrdersAdminComponent implements OnInit {
     }
     console.log(this.pendingtoggle,this.upcomingtoggle,this.pasttoggle);
   }
+  // update orders service call
   updateOrder(res){
       if(res.status=="Pending"){
         this.restaurantAdminService.editOrder(res._id,{"status":"InProgress"}).subscribe((data: any[])=>{

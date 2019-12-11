@@ -4,11 +4,13 @@
 
 </head>
 <body>
+    <!-- main container  -->
     <div class="container">
         <h1>Create Restaurant</h1>
+        <!-- restaurant background image -->
         <div class = "img_place" [ngStyle]="{'background-image': 'url(' + restaurantdata.bgimg+ ')'}">
                 <div class="restaurant_info">
-        
+                    <!-- floating div holding basic restaurant info -->
                 <div class="rest_content">
                         <div class = "name">
                             Name
@@ -33,6 +35,7 @@
         
                 </div>
             </div>
+        <!-- create restaurant form with the fields -->
         <form class="create-form">
             <mat-form-field class="inputfield">
                 <input matInput placeholder="Restaurant Name" [(ngModel)]='restaurantdata.name' name='restaurantdata.name'>
@@ -69,7 +72,7 @@
             <button mat-raised-button class="resBtn" color="primary" (click)="createRestaurant()">Save</button>
 
         </form>
-
+        <!-- menu section form used to create multiple menu items -->
         <form>
 
             <div class="container">
@@ -77,6 +80,7 @@
                     <h1>Menu Section</h1>
                     <button class="resBtn" type="submit" class="btn btn-success" (click)="createMenu()">Create Menu Item</button>
                 </div>
+                <!-- menu category bar div used to group the menu by category -->
                 <div class="menu_nav">
                     <ul>
                         <li *ngFor="let item of menu; let ind = index; trackBy: trackByFn" (click)="changeMenuCategory(item,ind)">{{item._id}}</li>
@@ -100,6 +104,7 @@
                         
                     </ul>
                 </div>
+                <!-- showing menu items by category -->
                 <div *ngFor="let m of menuCategory; let in = index; trackBy: trackByFn" class="card">
                      
                     <div class="card-container">
@@ -125,10 +130,8 @@
                                 <input type="text" name="img-{{in}}" class="form-control" [ngModel]="m.img" (ngModelChange)="m.img = $event" [disabled]="!m.edit">
                             </div>
                             <mat-checkbox class="checkbox" name="available-{{in}}" [ngModel]="m.isavailable" (ngModelChange)="m.isavailable = $event" [disabled]="!m.edit" >Available</mat-checkbox>
-                            <!-- <div>
-                                <label for="available">Available</label>
-                                <input type="checkbox" name="available-{{in}}" class="form-control" [ngModel]="m.isavailable" (ngModelChange)="m.isavailable = $event" [disabled]="!m.edit">
-                            </div> -->
+             
+                            <!-- buttons displayed only while hover -->
                             <div class="btndiv">
                                 <button type="submit" class="button btn btn-danger" (click)="delete(m)">Delete</button>
                                 <button type="submit" class="button btn btn-success" (click)="edit(m)">Edit</button>

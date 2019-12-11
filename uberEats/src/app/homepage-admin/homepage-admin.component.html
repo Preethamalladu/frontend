@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Assignment 7 </title>
+        <title> HomePage </title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     </head>
-    <body>
+    <body>  
+            <!-- top nav bar -->
             <div class="topnav">
                 <a href="/admin/homepage">Uber<span>Eats</span></a>
                 <a class="title"> Manage Restaurants </a>
                 <a class="signout" (click)="logout()">Sign Out</a>
             </div>
           <button class="button button2" (click)="navToCreateRestaurant()">Create Restaurant</button>
+          <!-- card layout to display restaurants -->
           <div class="container">
             <div *ngFor="let res of restaurants" (click)="navToRestaurantPage(res)" class="card">
                 <img src={{res.bgimg}} alt="Avatar" style="width:100%">

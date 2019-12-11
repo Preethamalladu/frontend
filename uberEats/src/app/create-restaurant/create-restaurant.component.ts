@@ -38,6 +38,7 @@ export class CreateRestaurantComponent implements OnInit {
       this.getMenu();
     }
   }
+  // get the latitude and longitude of the admin
   getLocation(){
     this.restaurantAdminService.getPosition().then(pos=>
       {
@@ -48,6 +49,7 @@ export class CreateRestaurantComponent implements OnInit {
          console.log(this.restaurantdata);
         });
   }
+  // get the whole menu object grouped by category of the items
   getMenu(){
     this.restaurantAdminService.getMenuByRestaurant(this.restaurant_id).subscribe((data: any[])=>{
       this.menu = data;
@@ -92,6 +94,7 @@ export class CreateRestaurantComponent implements OnInit {
   trackByFn(index, item) {
     return index;
 }
+// createRestaurant service call
   createRestaurant(){
     console.log(this.restaurantdata)
     this.restaurantdata['loc'] = {
@@ -112,6 +115,7 @@ export class CreateRestaurantComponent implements OnInit {
       }) 
     }
   }
+  // create menu service call
   createMenu(){
     
     // this.getMenu();
@@ -119,9 +123,11 @@ export class CreateRestaurantComponent implements OnInit {
     this.menuCategory.splice(0,0,this.menutemplate);
     // console.log(this.menu);
   }
+
   edit(m){
     m['edit']=!m['edit'];
   }
+  // update menu service call
   update(m){
     m['restaurant_id'] = this.restaurant_id;
     if("_id" in m){
@@ -136,13 +142,18 @@ export class CreateRestaurantComponent implements OnInit {
       })
     }
   }
+  // delete a menu item
   delete(m){
-    
+    this.restaurantAdminService.deleteMenu(m._id).subscribe((data: any)=>{
+      this.getMenu();
+    })
   }
+  // change the menu category
   changeMenuCategory(item,ind){
     this.currentMenuInd = ind;
     this.menuCategory = item["menu"];
   }
+
   toggleCategory(){
     // this.menu[""]
     this.addCategorytoggle = !this.addCategorytoggle;

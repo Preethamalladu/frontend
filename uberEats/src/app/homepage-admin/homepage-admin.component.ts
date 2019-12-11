@@ -22,10 +22,12 @@ export class HomepageAdminComponent implements OnInit {
   navToCreateRestaurant(){
     this.router.navigate(['/admin/createrestaurant']);
   }
+  
   navToRestaurantPage(res){
     
     this.router.navigate(['admin/restaurant/'+res['_id']]);
   }
+  // logout request
   logout(){
     this.router.navigate(['/admin']);
   }
