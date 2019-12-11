@@ -11,87 +11,90 @@ import { RestaurantServiceService } from '../restaurant-service.service'
 })
 export class RestaurantHomeMenuComponent implements OnInit {
   private routeSub: Subscription;
-  menu_data = {
-    "biryani" : [
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      }
-    ],
-    "giriyani" : [
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      }
-    ],
-    "ziriyani" : [
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"birc",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      }
-    ]
-  }
+  menu_data = [
+    {
+      _id: "biyani",
+      menu:[
+        {
+          name: "name",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: 10,
+          isavailable: false
+        },
+        {
+          name: "name",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: 10,
+          isavailable: false
+        },
+        {
+          name: "name",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: 10,
+          isavailable: false
+        },
+      ]
+    },
+    {
+      _id: "giyani",
+      menu:[
+        {
+          name: "name",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: 10,
+          isavailable: false
+        },
+        {
+          name: "name",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: 10,
+          isavailable: true
+        },
+        {
+          name: "name",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: 10,
+          isavailable: false
+        },
+      ]
+    },
+    {
+      _id: "biyani",
+      menu:[
+        {
+          name: "name",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: 10,
+          isavailable: true
+        },
+        {
+          name: "name",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: 10,
+          isavailable: false
+        },
+        {
+          name: "namasdasdsade",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: 10,
+          isavailable: true
+        },
+      ]
+    }
+
+  ]
   menu_id = 0;
   cart_data = []
-  total_price = 0
+  total_price = 0.0
   location = "click here to get current location";
   cur_rest;
   name = "";
@@ -99,6 +102,7 @@ export class RestaurantHomeMenuComponent implements OnInit {
   rating = "";
   no_rating = "";
   type_of_food = "";
+  isAlert = true;
   constructor(private router: Router,private rest: RestaurantServiceService,private loc: LocationServiceService, private route: ActivatedRoute) {
     this.getlocationData = this.getlocationData.bind(this);
     
@@ -110,8 +114,9 @@ export class RestaurantHomeMenuComponent implements OnInit {
       this.cart_data = JSON.parse( localStorage.getItem('order') )
       this.cart_data.forEach(item => {
         this.total_price += item.price;
+        console.log(item);
       });
-      this.total_price = parseFloat(this.total_price.toFixed(2));
+      this.total_price = parseFloat(this.total_price.toFixed(2)) ;
       this.routeSub = this.route.params.subscribe(params => {
        
         this.menu_id = params['id'] //log the value of id
@@ -168,12 +173,21 @@ export class RestaurantHomeMenuComponent implements OnInit {
     this.isShow = !this.isShow;
   }
 
+  toggleAlert(){
+    this.isAlert = !this.isAlert;
+  }
+
   addItem(dish){
-    this.cart_data.push(dish)
-    this.isShow  = false
-    this.total_price +=  dish.price
-    this.total_price = parseFloat(this.total_price.toFixed(2));
-    localStorage.setItem('order', JSON.stringify(this.cart_data))
+    if(dish["isavailable"]){
+      this.cart_data.push(dish)
+      this.isShow  = false
+      this.total_price +=  dish["price"]
+      this.total_price = parseFloat(this.total_price.toFixed(2));
+      localStorage.setItem('order', JSON.stringify(this.cart_data))
+    }else{
+      this.isAlert = !this.isAlert;
+    }
+    
     
   }
 
@@ -182,9 +196,13 @@ export class RestaurantHomeMenuComponent implements OnInit {
     if (index > -1) {
       this.cart_data.splice(index, 1);
       this.total_price -= order.price
-      this.total_price = parseFloat(this.total_price.toFixed(4));
+      this.total_price = parseFloat(this.total_price.toFixed(2));
+      localStorage.setItem('order', JSON.stringify(this.cart_data))
+    }else{
+      localStorage.removeItem('order');
+
     }
-    localStorage.setItem('order', JSON.stringify(this.cart_data))
+    
   }
 
   checkoutButton(){

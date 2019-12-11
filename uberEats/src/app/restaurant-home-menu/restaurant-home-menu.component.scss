@@ -414,3 +414,21 @@ body {
   }
  
 }
+
+
+.alert_box {
+  cursor: pointer;
+    z-index: 30;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 28px #888888;
+    position: absolute;
+    font-size: 30px;
+    // border: 2px solid black;
+    left: 35%;
+    width: 375px;
+    .cross {
+      font-size: 26px;
+      margin-bottom: 25px;
+  }
+}

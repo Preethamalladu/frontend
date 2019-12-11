@@ -1,4 +1,4 @@
-* {box-sizing: border-box;}
+// * {box-sizing: border-box;}
 
 body {
   margin: 0;
@@ -98,11 +98,10 @@ body {
   }
 }
 
-.container {
-   
+.container1 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
- 
+  // width: 200%;
   grid-auto-rows: auto;
   grid-gap: 2rem;
   margin: 15px 15px;
@@ -126,4 +125,25 @@ body {
     color: black;
   }
 }
-
+.nearest {
+  
+  .inner_nearest{
+    margin: 15px 15px;
+  padding: 15px;
+    font-size: 30px;
+  }
+  .container1 {
+   
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+   
+    grid-auto-rows: auto;
+    grid-gap: 2rem;
+    margin: 15px;
+    
+  }
+  hr {
+    margin: 30px 15px;
+    color: #ccc;
+  }
+}

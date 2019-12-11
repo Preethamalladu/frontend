@@ -24,8 +24,20 @@
                 Your favorite food, delivered with Uber
               </span>
           </div>
-           
-          <div class="container">
+
+          <div class = "nearest">
+            <div class = "inner_nearest">
+              Popular Near You
+            </div>
+            
+            <div class="container1">
+                <app-restaurant *ngFor="let res of restaurants | slice:0:5;" name={{res.name}} price={{res.price}} rating={{res.rating}} id = {{res._id}} type_of_food = {{res.type_of_food}} no_rating = {{res.no_rating}} ></app-restaurant>
+            </div>
+            <hr>
+          </div>
+          
+          <div class="container1">
+              
             <app-restaurant *ngFor="let res of restaurants" name={{res.name}} price={{res.price}} rating={{res.rating}} id = {{res._id}} type_of_food = {{res.type_of_food}} no_rating = {{res.no_rating}} ></app-restaurant>
         </div>
 
