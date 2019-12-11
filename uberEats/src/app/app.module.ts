@@ -83,7 +83,6 @@ import { RestaurantHomeMenuComponent } from './restaurant-home-menu/restaurant-h
     MatToolbarModule,
     AppRoutingModule,
     RouterModule.forRoot([
-      
     ]),
     BrowserAnimationsModule
   ],
