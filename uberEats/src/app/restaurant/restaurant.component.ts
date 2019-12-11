@@ -34,6 +34,7 @@ export class RestaurantComponent implements OnInit {
     
   }
 
+  // once we click a the div, it sends the respective id to the next route with id i.e, restaruant homepage
   next_page(id){
     console.log(this.id);
     this.router.navigate(['restaurant/homepage/'+this.id]); // add id here and change in routing
