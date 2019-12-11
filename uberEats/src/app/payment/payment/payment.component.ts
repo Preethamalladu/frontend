@@ -45,7 +45,7 @@ export class PaymentComponent implements OnInit {
       console.log(23562374)
       
       // sessionStorage.setItem("userId","5df055d63dc6122b40a3425b")
-      this.userId=JSON.parse(localStorage.getItem("data")["_id"])
+      this.userId=JSON.parse(localStorage.getItem("data"))["_id"]
         var  paymentObj=this.paymentservice.createPayment(
 {
   "type": "credit card",
@@ -60,6 +60,10 @@ export class PaymentComponent implements OnInit {
       // newpaymentId=new;   
       var ordercart:any=[]
       console.log(this.items);
+      for(let i of this.items){
+        i = i[0];
+      }
+      console.log(this.items,'sdfs');
       // this.items.map((x)=>{ordercart.push(x[0])})
       // console.log(9090);
       console.log(this.items[0]["restauantId"]);
