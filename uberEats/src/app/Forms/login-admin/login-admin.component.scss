@@ -1,9 +1,22 @@
-.form-group {
-  display: inline-flex;
-}
-  hr{height:1px;width:80%;background-color: #424242; height:2px;
+.outer {
+  position: relative;
+  background-position: 30%;
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  height: 1000px;
+  background-image: url("https://wallpaperplay.com/walls/full/5/7/e/121426.jpg");
+  .container {
+    
+    width: 40%;
+    min-height: 50%;
+    position: absolute;
+    top: 15%;
+    left: 30%;
+    background-color: white;
 
+    padding: 20px 20px;
+    .inne_container {
+      margin-left: 25%;
+    }
   }
-  #loginbox{
-   // max-width: 100%;
-  }
+}

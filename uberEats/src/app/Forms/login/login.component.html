@@ -1,9 +1,12 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+<div class = "outer">
+
+
 <div class="container">
-    <h2>Login</h2>
+    <h2>Customer Login</h2>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-        <label for="username">Email</label>
+        <label for="username">Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
         <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
         <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
             <div *ngIf="f.username.errors.required">Username is required</div>
@@ -21,4 +24,5 @@
         <a [routerLink]="['/register']" class="btn btn-link">Register</a>
     </div>
 </form>
+</div>
 </div>
