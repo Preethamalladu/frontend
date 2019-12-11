@@ -2,7 +2,7 @@
 <html>
     <head></head>
     <body>
-       
+       <!-- orders container -->
         <div class='order-container'>
             <div class='inner-container'>
                 <div id="rightdiv" class="rightdiv">
@@ -12,6 +12,7 @@
                         <li><a class="a" (click)="toggle('past')">Past</a></li>
                     </ul>
                 </div>
+                <!-- side div to show upcoming and complete orders -->
                 <div class="sidediv">
                         <div class="container1">
                                 <div *ngFor="let res of orders" class="card">

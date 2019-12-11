@@ -30,6 +30,7 @@ export class RestaurantAnalyticsAdminComponent implements OnInit {
     
   }
 
+  // orders graph using mongo aggregation
   ordersGraph(data){
     var chart = new CanvasJS.Chart("chartContainer", {
       animationEnabled: true,
@@ -52,24 +53,9 @@ export class RestaurantAnalyticsAdminComponent implements OnInit {
     });
     chart.render();
     
-    // var chart = new CanvasJS.Chart("chartContainer", {
-    //   animationEnabled: true,
-    //   theme: "light2",
-    //   title:{
-    //     text: "Simple Line Chart"
-    //   },
-    //   axisY:{
-    //     includeZero: false
-    //   },
-    //   data: [{        
-    //     type: "line",       
-   
-    //     dataPoints:data
-    //   }]
-    // });
-    // chart.render();
-  }
 
+  }
+  // category graph using canvas.js
   categoryGraphs(data){
     var chart2 = new CanvasJS.Chart("chartContainer2", {
       theme: "dark2",
@@ -89,15 +75,7 @@ export class RestaurantAnalyticsAdminComponent implements OnInit {
         showInLegend: true,
         toolTipContent: "<b>{name}</b>: {y} (#percent%)",
         indexLabel: "{name} - #percent%",
-        // dataPoints: [
-        //   { y: 450, name: "Food" },
-        //   { y: 120, name: "Insurance" },
-        //   { y: 300, name: "Travelling" },
-        //   { y: 800, name: "Housing" },
-        //   { y: 150, name: "Education" },
-        //   { y: 150, name: "Shopping"},
-        //   { y: 250, name: "Others" }
-        // ]
+
         dataPoints:data
       }]
     });
@@ -113,6 +91,7 @@ export class RestaurantAnalyticsAdminComponent implements OnInit {
     }
 
   }
+  // revenu graph using canvas.js
   revenueGraph(data){
   
 
@@ -136,26 +115,7 @@ export class RestaurantAnalyticsAdminComponent implements OnInit {
         name: "companies",
         axisYType: "secondary",
         color: "#014D65",
-        // dataPoints: [
-        //   { y: 3, label: "Sweden" },
-        //   { y: 7, label: "Taiwan" },
-        //   { y: 5, label: "Russia" },
-        //   { y: 9, label: "Spain" },
-        //   { y: 7, label: "Brazil" },
-        //   { y: 7, label: "India" },
-        //   { y: 9, label: "Italy" },
-        //   { y: 8, label: "Australia" },
-        //   { y: 11, label: "Canada" },
-        //   { y: 15, label: "South Korea" },
-        //   { y: 12, label: "Netherlands" },
-        //   { y: 15, label: "Switzerland" },
-        //   { y: 25, label: "Britain" },
-        //   { y: 28, label: "Germany" },
-        //   { y: 29, label: "France" },
-        //   { y: 52, label: "Japan" },
-        //   { y: 103, label: "China" },
-        //   { y: 134, label: "US" }
-        // ]
+
         dataPoints:data
       }]
     });
