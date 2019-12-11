@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestaurantAdminService } from '../restaurant-admin.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 @Component({
   selector: 'app-create-restaurant',
   templateUrl: './create-restaurant.component.html',
@@ -18,7 +18,7 @@ export class CreateRestaurantComponent implements OnInit {
   restaurantdata = {"bgimg":"https://images.unsplash.com/photo-1553964274-ac6059a35745?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"}
   lat = 0;
   long = 0;
-  constructor(private restaurantAdminService:RestaurantAdminService, private route: ActivatedRoute) { }
+  constructor(private restaurantAdminService:RestaurantAdminService, private route: ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
     
@@ -103,6 +103,7 @@ export class CreateRestaurantComponent implements OnInit {
     this.restaurantAdminService.createRestaurant(this.restaurantdata).subscribe((data: any[])=>{
       this.restaurantdata["_id"] = data['_id'];
       this.restaurant_id = data["_id"];
+      this.router.navigate(["/admin/homepage"])
     })  }
     else{
       this.restaurantAdminService.editRestaurant(this.restaurantdata["_id"],this.restaurantdata).subscribe((data: any[])=>{
