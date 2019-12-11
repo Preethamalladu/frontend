@@ -9,7 +9,11 @@ import {ActivatedRoute} from '@angular/router';
 export class CreateRestaurantComponent implements OnInit {
   // menu = [{"name":"abc","category":"abc","isavalable":true,"price":"12$","edit":false},{"name":"abcd","category":"abc","isavalable":true,"price":"12$","edit":false},{"name":"abcde","category":"abc","isavalable":true,"price":"12$","edit":false},{"name":"abc","category":"abc","isavalable":true,"price":"12$","edit":false},{"name":"abc","category":"abc","isavalable":true,"price":"12$","edit":false}];
   menu=[]
-  restaurant_id = ""
+  menuCategory = []
+  currentMenuInd = -1;
+  restaurant_id = "";
+  category = "";
+  addCategorytoggle = false;
   menutemplate = {"name":"a","category":"","isavalable":false,"price":"","edit":true};
   restaurantdata = {"bgimg":"https://images.unsplash.com/photo-1553964274-ac6059a35745?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"}
   lat = 0;
@@ -47,7 +51,19 @@ export class CreateRestaurantComponent implements OnInit {
   getMenu(){
     this.restaurantAdminService.getMenuByRestaurant(this.restaurant_id).subscribe((data: any[])=>{
       this.menu = data;
+      if(this.currentMenuInd==-1){
+        for(let i of this.menu){
+          this.currentMenuInd = 0;
+          this.menuCategory = this.menu[this.currentMenuInd]["menu"]
+          break;
+        }
+        
+      }
+      else{
+        this.menuCategory = this.menu[this.currentMenuInd]["menu"]
+      }
       console.log(this.menu);
+      
     })
   }
   check(){
@@ -98,7 +114,8 @@ export class CreateRestaurantComponent implements OnInit {
   createMenu(){
     
     // this.getMenu();
-    this.menu.splice(0,0,this.menutemplate);
+    this.menutemplate['category'] = this.menu[this.currentMenuInd]['_id']
+    this.menuCategory.splice(0,0,this.menutemplate);
     // console.log(this.menu);
   }
   edit(m){
@@ -120,5 +137,19 @@ export class CreateRestaurantComponent implements OnInit {
   }
   delete(m){
     
+  }
+  changeMenuCategory(item,ind){
+    this.currentMenuInd = ind;
+    this.menuCategory = item["menu"];
+  }
+  toggleCategory(){
+    // this.menu[""]
+    this.addCategorytoggle = !this.addCategorytoggle;
+  }
+  addCategory(){
+    if(this.category){
+      this.menu.push({_id:this.category,menu:[]})
+      this.category = '';
+    }
   }
 }

@@ -5,18 +5,20 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     </head>
     <body>
-        <div class="topnav">
-            <a href="/admin/homepage">UberEats</a>
+        <!-- <div class="topnav">
+            <a href="/admin/homepage">Uber<span>Eats</span></a>
             <h2> Manage Restaurants </h2>
-            <button class="btn"><i class="fas fa-user"></i></button>
+            <h2>Sign Out</h2>
             
             
-          </div>
+          </div> -->
           <div id="topnav2">
             <ul>
+                <li><a href="/admin/homepage">Uber<span>Eats</span></a></li>
                 <li><a class="a active" (click)="toggle('restaurant')">Restaurant</a></li>
                 <li><a class="a" (click)="toggle('analytics')">Analytics</a></li>
                 <li><a class="a" (click)="toggle('orders')">Orders</a></li>
+                <li class="signout"><a  >Sign Out</a></li>
             </ul>
             
         </div>
@@ -26,5 +28,9 @@
         <div *ngIf="orderspage">
             <app-restaurant-orders-admin></app-restaurant-orders-admin>
         </div>
+        <div *ngIf="analytics">
+            <app-restaurant-analytics-admin></app-restaurant-analytics-admin>
+        </div>
+        
     </body>
 </html>

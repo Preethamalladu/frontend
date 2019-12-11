@@ -77,7 +77,30 @@
                     <h1>Menu Section</h1>
                     <button class="resBtn" type="submit" class="btn btn-success" (click)="createMenu()">Create Menu Item</button>
                 </div>
-                <div *ngFor="let m of menu; let in = index; trackBy: trackByFn" class="card">
+                <div class="menu_nav">
+                    <ul>
+                        <li *ngFor="let item of menu; let ind = index; trackBy: trackByFn" (click)="changeMenuCategory(item,ind)">{{item._id}}</li>
+                        <div *ngIf="addCategorytoggle">
+                            <li (click) = "toggleCategory()"class = "order">
+                                
+                                <i class="fas fa-times"></i>
+                            </li>
+                            <div class="categoryinput">
+                                <input name="category-temp" [ngModel]='category' (ngModelChange)="category = $event">
+                                <button mat-raised-button (click)="addCategory()" >Create</button>
+                            </div>
+                        </div>
+                        <div *ngIf="!addCategorytoggle">
+                            <li (click) = "toggleCategory()"class = "order">
+                                <i class="fas fa-plus"></i>
+                            </li>
+                            
+                        </div>
+                        
+                        
+                    </ul>
+                </div>
+                <div *ngFor="let m of menuCategory; let in = index; trackBy: trackByFn" class="card">
                      
                     <div class="card-container">
                             <div>
@@ -88,10 +111,10 @@
                                 <label for="description">Description</label>
                                 <input type="text" name="description-{{in}}" class="form-control" [ngModel]="m.description" value="m.description" (ngModelChange)="m.description = $event" [disabled]="!m.edit">
                             </div>
-                            <div>
+                            <!-- <div>
                                 <label for="category">Category</label>
                                 <input type="text" name="category-{{in}}" class="form-control" [ngModel]="m.category" (ngModelChange)="m.category = $event" [disabled]="!m.edit">
-                            </div>
+                            </div> -->
                             
                             <div>
                                 <label for="price">Price</label>
@@ -111,8 +134,9 @@
                                 <button type="submit" class="button btn btn-success" (click)="edit(m)">Edit</button>
                                 <button type="submit" class="button btn btn-success" (click)="update(m)">Submit</button>
                             </div>
+                            </div>
                     </div>
-                </div>
+                
             </div>
         </form>
         
