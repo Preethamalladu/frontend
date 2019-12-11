@@ -49,14 +49,8 @@ export class LoginComponent implements OnInit {
         alert("Invalid username or password");
       } else{
         this.authenticationService.setIsLoggedIn();
-         sessionStorage.setItem("id", data.id);
-         sessionStorage.setItem("firstName", data.firstName);
-         sessionStorage.setItem("lastName", data.lastName);
-         sessionStorage.setItem("email", data.email);
-         sessionStorage.setItem("password", data.password);
-         sessionStorage.setItem("creditCard", data.creditCard)
-         sessionStorage.setItem("CVV", data.CVV);
-         sessionStorage.setItem("expiryDate", data.expiryDate);
+        localStorage.setItem('data', data);
+        localStorage.setItem('token', data.token);
          alert('Login successful');
          this.router.navigate(['/customer/homepage']);
       }
