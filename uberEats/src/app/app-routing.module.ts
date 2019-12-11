@@ -7,7 +7,6 @@ import {HomepageCustomerComponent} from '../app/homepage-customer/homepage-custo
 import { RestaurantComponent } from '../app/restaurant/restaurant.component';
 import { RestaurantHomeMenuComponent } from './restaurant-home-menu/restaurant-home-menu.component';
 
-const routes: Routes = [];
 
 const routes: Routes = [
   {path: 'customer/homepage', component: HomepageCustomerComponent, pathMatch: 'full'},
