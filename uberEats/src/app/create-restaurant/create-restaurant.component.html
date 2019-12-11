@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Create Restaurant</h1>
+        <div class = "img_place" [ngStyle]="{'background-image': 'url(' + restaurantdata.bgimg+ ')'}">
+                <div class="restaurant_info">
+        
+                <div class="rest_content">
+                        <div class = "name">
+                            Name
+                                {{restaurantdata.name}}
+        
+                            </div>
+                            <div class = 'price_rating'>
+                                <span>
+                                    Price 
+                                    {{restaurantdata.price}}&nbsp;•&nbsp; {{restaurantdata.type_of_food}}
+                                    
+                                </span>
+                            </div>
+                            <div class = rating_time_deliveryfee>
+                                <span>
+                                    rating and review
+                                    {{restaurantdata.rating}}&nbsp;<i class="fas fa-star"></i>
+                                    &nbsp;
+                                </span>
+                            </div>
+                </div>
+        
+                </div>
+            </div>
+        <form class="create-form">
+            <mat-form-field class="inputfield">
+                <input matInput placeholder="Restaurant Name" [(ngModel)]='restaurantdata.name' name='restaurantdata.name'>
+            </mat-form-field>
+        
+            <mat-form-field class="inputfield">
+                <input matInput placeholder="Food Category" [(ngModel)]='restaurantdata.type_of_food' name='restaurantdata.type_of_food'>
+            </mat-form-field>
+            <mat-form-field class="inputfield">
+                <input matInput placeholder="Address" [(ngModel)]='restaurantdata.address' name='restaurantdata.address'>
+            </mat-form-field>
+            
+            <mat-form-field class="inputfield">
+                <input matInput placeholder="Email" [(ngModel)]='restaurantdata.email' name='restaurantdata.email'>
+            </mat-form-field>
+    
+            <mat-form-field class="inputfield">
+                <input matInput placeholder="Phone" [(ngModel)]='restaurantdata.phone' name='restaurantdata.phone'>
+            </mat-form-field>
+            
+            <mat-form-field class="inputfield">
+                <input matInput placeholder="Background Image" [(ngModel)]='restaurantdata.bgimg' name='restaurantdata.bgimg'>
+            </mat-form-field>
+            <mat-form-field class="inputfield">
+                <input matInput placeholder="Location" [(ngModel)]='restaurantdata.location' name='restaurantdata.location'>
+            </mat-form-field>
+            
+            <mat-form-field class="inputfield">
+                <input matInput placeholder="Price" [(ngModel)]='restaurantdata.price' name='restaurantdata.price'>
+            </mat-form-field>
+            
+            
+            <!-- <br> -->
+            <button mat-raised-button class="resBtn" color="primary" (click)="createRestaurant()">Primary</button>
+
+        </form>
+
+        <form>
+
+            <div class="container">
+                <div>
+                    <h1>Menu Section</h1>
+                    <button class="resBtn" type="submit" class="btn btn-success" (click)="createMenu()">Create Menu Item</button>
+                </div>
+                <div *ngFor="let m of menu; let in = index; trackBy: trackByFn" class="card">
+                     
+                    <div class="card-container">
+                            <div>
+                                <label for="name">Name</label>
+                                <input type="text" name="name-{{in}}" class="form-control" [ngModel]="m.name" value="m.name" (ngModelChange)="m.name = $event" [disabled]="!m.edit">
+                            </div>
+                            <div>
+                                <label for="description">Description</label>
+                                <input type="text" name="description-{{in}}" class="form-control" [ngModel]="m.description" value="m.description" (ngModelChange)="m.description = $event" [disabled]="!m.edit">
+                            </div>
+                            <div>
+                                <label for="category">Category</label>
+                                <input type="text" name="category-{{in}}" class="form-control" [ngModel]="m.category" (ngModelChange)="m.category = $event" [disabled]="!m.edit">
+                            </div>
+                            
+                            <div>
+                                <label for="price">Price</label>
+                                <input type="number" name="price-{{in}}" class="form-control" [ngModel]="m.price" (ngModelChange)="m.price = $event" [disabled]="!m.edit">
+                            </div>
+                            <div>
+                                <label for="img">Image</label>
+                                <input type="text" name="img-{{in}}" class="form-control" [ngModel]="m.img" (ngModelChange)="m.img = $event" [disabled]="!m.edit">
+                            </div>
+                            <mat-checkbox class="checkbox" name="available-{{in}}" [ngModel]="m.isavailable" (ngModelChange)="m.isavailable = $event" [disabled]="!m.edit" >Available</mat-checkbox>
+                            <!-- <div>
+                                <label for="available">Available</label>
+                                <input type="checkbox" name="available-{{in}}" class="form-control" [ngModel]="m.isavailable" (ngModelChange)="m.isavailable = $event" [disabled]="!m.edit">
+                            </div> -->
+                            <div class="btndiv">
+                                <button type="submit" class="button btn btn-danger" (click)="delete(m)">Delete</button>
+                                <button type="submit" class="button btn btn-success" (click)="edit(m)">Edit</button>
+                                <button type="submit" class="button btn btn-success" (click)="update(m)">Submit</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+    </body>
+    </html>
+
+ 
