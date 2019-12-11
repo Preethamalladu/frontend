@@ -5,13 +5,11 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     </head>
     <body>
-        <div class="topnav">
-            <a href="/admin/homepage">UberEats</a>
-            <h2> Manage Restaurants </h2>
-            <button class="btn"><i class="fas fa-user"></i></button>
-            
-            
-          </div>
+            <div class="topnav">
+                <a href="/admin/homepage">Uber<span>Eats</span></a>
+                <h2> Manage Restaurants </h2>
+                <h2>Sign Out</h2>
+            </div>
           <button class="button button2" (click)="navToCreateRestaurant()">Create Restaurant</button>
           <div class="container">
             <div *ngFor="let res of restaurants" (click)="navToRestaurantPage(res)" class="card">
