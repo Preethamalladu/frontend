@@ -1,4 +1,5 @@
 <div class="paymentpage">
+          <navbarcomp></navbarcomp>  
 <form class="paymentpage" autocomplete="">
 <input class="defaultDetailsBtn" type="button" value="Use Default Payment Details">
 
@@ -12,7 +13,8 @@
 <input type="text" id="cv" name="cv" [(ngModel)]="cv"  [ngModelOptions]="{standalone: true}" autocomplete="off">
 <input type="text" id="postal" name="postal" [(ngModel)]="postal"  [ngModelOptions]="{standalone: true}" autocomplete="off">
 </div>
-<input class="submitbutton" type="submit" value="pay" (click)="success($event)" >
+<!-- <button  class="submitbutton"  value="pay" (click)="successPayment($event,[cn,ed,cv,postal])"></button> -->
+<input class="submitbutton" type="button" value="pay" (click)="successPayment($event,[cn,ed,cv,postal])" >
 
 </form>
 </div>
