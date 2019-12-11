@@ -9,7 +9,7 @@ import { RestaurantAdminService } from "../restaurant-admin.service";
 export class HomepageAdminComponent implements OnInit {
   public firstName: "sd";
   public lastName: "sd";
-  restaurants = [{"name":"Preetham","description":"noob","img":"https://images.unsplash.com/photo-1556742205-e10c9486e506?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"},{"name":"Ayesh","description":"pro","img":"https://images.unsplash.com/photo-1556742205-e10c9486e506?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"},{"name":"Preetham","description":"noob","img":"https://images.unsplash.com/photo-1556742205-e10c9486e506?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"},{"name":"Ayesh","description":"pro","img":"https://images.unsplash.com/photo-1556742205-e10c9486e506?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"},{"name":"Preetham","description":"noob","img":"https://images.unsplash.com/photo-1556742205-e10c9486e506?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"},{"name":"Ayesh","description":"pro","img":"https://images.unsplash.com/photo-1556742205-e10c9486e506?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"}];
+  restaurants = [];
   isLogged;
   constructor(private router:Router,private restaurantAdminService: RestaurantAdminService) { }
 
@@ -25,5 +25,8 @@ export class HomepageAdminComponent implements OnInit {
   navToRestaurantPage(res){
     
     this.router.navigate(['admin/restaurant/'+res['_id']]);
+  }
+  logout(){
+    this.router.navigate(['/admin']);
   }
 }

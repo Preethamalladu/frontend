@@ -14,7 +14,7 @@ export class RestaurantAnalyticsAdminComponent implements OnInit {
 
   ngOnInit() {
     this.restaurant_id = this.route.snapshot.paramMap.get('id');
-    this.restaurant_id = "sdfsdf"
+    // this.restaurant_id = "sdfsdf"
    this.restaurantAdminService.getTotalOrdersAnalytics(this.restaurant_id).subscribe((data: any[])=>{
       console.log(data);
       this.ordersGraph(data);
@@ -87,7 +87,7 @@ export class RestaurantAnalyticsAdminComponent implements OnInit {
         type: "doughnut",
         innerRadius: 150,
         showInLegend: true,
-        toolTipContent: "<b>{name}</b>: ${y} (#percent%)",
+        toolTipContent: "<b>{name}</b>: {y} (#percent%)",
         indexLabel: "{name} - #percent%",
         // dataPoints: [
         //   { y: 450, name: "Food" },

@@ -111,6 +111,10 @@ export class RestaurantAdminService {
     return this.httpClient.delete<void>(`${this.MENU_API_SERVER}/${id}`,{headers:this.headers})
   }
 
+  public editOrder(id, opost){
+    this.getToken();
+    return this.httpClient.put(this.ORDER_API_SERVER+"/"+id, opost,{headers:this.headers});
+  }
   public getOrdersByRestaurant(res_id,filter){
     this.getToken();
     return this.httpClient.get(this.ORDER_API_SERVER+"/"+res_id+"/"+filter,{headers:this.headers});
