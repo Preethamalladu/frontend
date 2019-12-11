@@ -1,0 +1,40 @@
+<div class="back" >
+            <navbarcomp></navbarcomp>  
+            <div class="total_cont">
+<div class="orderSummary"> 
+        <h1 >Order Cart</h1>
+        <form >
+               <!-- <div *ngFor="let element of this.data" > 
+                    <input [(ngModel)]="element.name" [ngModelOptions]="{standalone: true}" placeholder="name" readonly/>
+                
+                <input type="number" id="sdg" name="quantity" value="56" min="0" max="110">   
+                <input type="label" id="FSD" name="price" value={{element.quantity*element.price}}  min="0" max="1100" readonly>  
+               </div> -->
+               <input type="label" value="item" placeholder="element" readonly/>
+               <input type="label" value="quantity" placeholder="element" readonly/>
+               <input type="label" value="price" placeholder="element" readonly/>
+               <input type="label" value="amount" placeholder="element" readonly/>
+
+               <div class="formgroup" *ngFor="let element of this.data">
+                    
+                    <input value={{element.name}} placeholder="element" readonly/>
+                    <input type="number" id="quantity" name="quantity" [(ngModel)]="element.quantity" [ngModelOptions]="{standalone: true}" min="0" max="100" (ngModelChange)="recalculate($event)"/>   
+                    <input type="label" id="price" name="price" value={{element.price}}  readonly/>  
+                    <input type="label" id="amount" name="amount" value={{element.quantity*element.price}}  readonly/>    
+                  </div>
+                  <div class="formgroup" >
+                        <label>Sales Tax(8%)</label>
+                        <label >{{salesTax}}</label>
+                  </div>
+                  <div class="formgroup" >
+                        <label>Total</label>
+                        <label >{{total}}</label>
+                  </div>
+                  <button type="submit" class="btn btn-success" *ngIf="this.isPayment" (click)="redirecttopayment($event)">Proceed to Payment</button>
+                  
+        </form>
+     
+        
+    </div>
+</div>
+</div>
