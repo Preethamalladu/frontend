@@ -21,13 +21,13 @@ export class RestaurantAdminService {
   }
   postNewAdmin(admin: Admin) {
     // tslint:disable-next-line: max-line-length
-    return this.httpClient.post(`${this.RESTAURANT_API_SERVER}/admin`, admin, { headers: this.headers1 = this.headers1.set('api-key', '54asdkj1209nksnda') })
+    return this.httpClient.post(this.ROOT_API_SERVER+"/admin", admin, { headers: this.headers1 = this.headers1.set('api-key', '54asdkj1209nksnda') })
      .map((data) => console.log(JSON.stringify(data)));
   }
 
   login(email: string, password: string) {
       // tslint:disable-next-line: max-line-length
-      return this.httpClient.post(`${this.RESTAURANT_API_SERVER}/login/admin`, {email : email, password : password}, { headers: this.headers1 = this.headers1.set('api-key', '54asdkj1209nksnda')} )
+      return this.httpClient.post(this.ROOT_API_SERVER+"/login/admin", {email : email, password : password}, { headers: this.headers1 = this.headers1.set('api-key', '54asdkj1209nksnda')} )
       .pipe(catchError(this.handleError('Admin Login', {email : email, password : password})));
   }
 
