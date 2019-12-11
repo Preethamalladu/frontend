@@ -93,7 +93,7 @@ export class RestaurantHomeMenuComponent implements OnInit {
 
   // ]
   menu_data = [];
-  menu_id = 0;
+  menu_id = "";
   cart_data = []
   total_price = 0.0
   location = "click here to get current location";
@@ -118,14 +118,15 @@ export class RestaurantHomeMenuComponent implements OnInit {
         console.log(item);
       });
       this.total_price = parseFloat(this.total_price.toFixed(2)) ;
-      this.routeSub = this.route.params.subscribe(params => {
-       
-        this.menu_id = params['id'] //log the value of id
-      });
+    
       
 
     }
-
+    this.menu_id = this.route.snapshot.paramMap.get("id")
+    // this.routeSub = this.route.params.subscribe(params => {
+       
+    //   this.menu_id = params['id'] //log the value of id
+    // });
     //get menu by restId
     this.rest.getMenubyRestId(this.menu_id).subscribe((data: any[]) => {
 
@@ -161,7 +162,11 @@ export class RestaurantHomeMenuComponent implements OnInit {
     this.loc.sendGetRequest(latitude,longitude).subscribe((data: any[]) => {
       console.log(data["results"][0]["formatted"]);
       if(data["status"]["code"] == "200"){
-        this.location = data["results"][0]["formatted"]
+        var locc = data["results"][0]["formatted"]
+        locc = locc.split(",")
+        locc.pop()
+        locc.pop()
+        this.location = locc.join(",");
       }else{
         alert("unable to get location");
       }

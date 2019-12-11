@@ -42,7 +42,11 @@ export class HomepageCustomerComponent implements OnInit {
     this.loc.sendGetRequest(latitude,longitude).subscribe((data: any[]) => {
       console.log(data["results"][0]["formatted"]);
       if(data["status"]["code"] == "200"){
-        this.location = data["results"][0]["formatted"]
+        var locc = data["results"][0]["formatted"]
+        locc = locc.split(",")
+        locc.pop()
+        locc.pop()
+        this.location = locc.join(",");
       }else{
         alert("unable to get location");
       }
