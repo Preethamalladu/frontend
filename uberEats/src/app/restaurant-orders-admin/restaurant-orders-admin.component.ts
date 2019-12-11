@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+declare var require: any
+var CanvasJS = require('../canvasjs-2.3.2/canvasjs.min');
 import { RestaurantAdminService } from '../restaurant-admin.service';
 import {ActivatedRoute} from '@angular/router';
 @Component({
@@ -20,6 +22,8 @@ export class RestaurantOrdersAdminComponent implements OnInit {
       console.log(data);
       this.orders = data;
     }) 
+
+    
   }
   toggle(val){
     if(val=='upcoming'){
