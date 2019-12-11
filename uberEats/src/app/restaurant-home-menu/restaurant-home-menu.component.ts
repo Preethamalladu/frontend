@@ -11,84 +11,87 @@ import { RestaurantServiceService } from '../restaurant-service.service'
 })
 export class RestaurantHomeMenuComponent implements OnInit {
   private routeSub: Subscription;
-  menu_data = {
-    "biryani" : [
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      }
-    ],
-    "giriyani" : [
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      }
-    ],
-    "ziriyani" : [
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"birc",
-        "decp":"bira decp",
-        "price": 9.99
-      },
-      {
-        "name":"bira",
-        "decp":"bira decp",
-        "price": 9.99
-      }
-    ]
-  }
+  menu_data = [
+    {
+      _id: "biyani",
+      menu:[
+        {
+          name: "name",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: "10",
+          isavailable: false
+        },
+        {
+          name: "name",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: "10",
+          isavailable: false
+        },
+        {
+          name: "name",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: "10",
+          isavailable: false
+        },
+      ]
+    },
+    {
+      _id: "giyani",
+      menu:[
+        {
+          name: "name",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: "10",
+          isavailable: false
+        },
+        {
+          name: "name",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: "10",
+          isavailable: false
+        },
+        {
+          name: "name",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: "10",
+          isavailable: false
+        },
+      ]
+    },
+    {
+      _id: "biyani",
+      menu:[
+        {
+          name: "name",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: "10",
+          isavailable: false
+        },
+        {
+          name: "name",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: "10",
+          isavailable: false
+        },
+        {
+          name: "namasdasdsade",
+          description: "desc",
+          img: "https://picsum.photos/200",
+          price: "10",
+          isavailable: false
+        },
+      ]
+    }
+
+  ]
   menu_id = 0;
   cart_data = []
   total_price = 0
