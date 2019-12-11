@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomerProfileComponent } from './profile/customer-profile/customer-profile.component';
@@ -14,7 +13,13 @@ import { SuccesspaymentComponent } from './payment/successpayment/successpayment
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarcompComponent } from './navbarcart/navbarcomp/navbarcomp.component';
+import { HomepageCustomerComponent } from './homepage-customer/homepage-customer.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RestaurantComponent } from './restaurant/restaurant.component';
+import { RestaurantHomeMenuComponent } from './restaurant-home-menu/restaurant-home-menu.component';
 @NgModule({
+  providers: [],
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     CustomerProfileComponent,
@@ -22,6 +27,9 @@ import { NavbarcompComponent } from './navbarcart/navbarcomp/navbarcomp.componen
     CustomerProfileComponent,
     RestaurantProfileComponent,
     OrdersComponent,
+  HomepageCustomerComponent,
+    RestaurantComponent,
+    RestaurantHomeMenuComponent
     OrderHistoryComponent,
     PaymentComponent,
     SuccesspaymentComponent,
@@ -34,6 +42,7 @@ import { NavbarcompComponent } from './navbarcart/navbarcomp/navbarcomp.componen
     FormsModule,
     MatToolbarModule,
     AppRoutingModule,
+  HttpClientModule,
     RouterModule.forRoot([
       {
         path: 'profile/customer/:customerID', 
@@ -73,9 +82,7 @@ import { NavbarcompComponent } from './navbarcart/navbarcomp/navbarcomp.componen
     
     ]),
     BrowserAnimationsModule
-
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  ]
 })
+
 export class AppModule { }
