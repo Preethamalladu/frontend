@@ -47,7 +47,7 @@
     </div>
     <div class="menu_nav">
         <ul>
-            <li *ngFor="let item of menu_data | keyvalue" (click) = "scroll(item.key)">{{item.key}}</li>
+            <li *ngFor="let item of menu_data" (click) = "scroll(item._id)">{{item._id}}</li>
             <li (click) = "toggleDisplay()"class = "order">
                 <i class="fas fa-shopping-basket"></i>
             </li>   
@@ -99,20 +99,20 @@
     
     <div class="menu_div">
         <div class="menu_items">
-            <div *ngFor="let item of menu_data | keyvalue" id = {{item.key}}>
+            <div *ngFor="let item of menu_data" id = {{item._id}}>
                 <ul>
-                    <h2>{{item.key}}</h2>
-                    <li *ngFor = "let dish of item.value">
+                    <h2>{{item._id}}</h2>
+                    <li *ngFor = "let dish of item.menu">
                         <div class="item">
                             <div class = "left">
                                 <div class="item_name">
-                                    {{dish.name}}
+                                    {{dish["name"]}}
                                 </div>
                                 <div class = "item_desc">
-                                    {{dish.decp}}
+                                    {{dish["description"]}}
                                 </div>
                                 <div class="item_price">
-                                    {{dish.price}}
+                                    {{dish["price"]}}
                                 </div>
                                 <div class = "add_rmv">
                                     <i class="fas fa-cart-plus"(click)= addItem(dish)></i>
@@ -121,7 +121,7 @@
                             </div>
                             <div class="right">
                                 <div class="item_img">
-                                    <img src="https://picsum.photos/200" >
+                                    <img src= "{{dish['img']}}" >
                                 </div>
                             </div>
                         </div>
