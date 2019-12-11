@@ -33,6 +33,7 @@ export class OrdersComponent implements OnInit {
   // this.isPayment=this.router.getCurrentNavigation().extras.state.isPayment;
   //  console.log(this.data);
   // console.log(this.router.getCurrentNavigation().extras);
+    console.log("test")
     this.recalculate(null);
   }
  

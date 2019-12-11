@@ -9,20 +9,33 @@ export class RestaurantServiceService {
 
 
   private REST_API_SERVER = "http://localhost:3000/restaurant";
-  private header = {"access-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjVkZjA1NWQ2M2RjNjEyMmI0MGEzNDI1YiIsInJvbGUiOiJjdXN0b21lciJ9.cj7ZNndPT6hEQjUu2DQ9_baJxhpJSubPhilPxD3wkZ4"}
+  private MENU_SERVER = "http://localhost:3000/menu/restaurant"
+  private header = {};
   constructor(private httpClient: HttpClient) {
       
    }
+   getToken(){
+    var localdata =  localStorage.getItem("token");
+    this.header["access-token"] = localdata
+  }
   
   public sendGetRequest(){
+    this.getToken()
     return this.httpClient.get(this.REST_API_SERVER,{headers:this.header});
   } 
 
   public sendSearchRequest(search){
+    this.getToken();
     return this.httpClient.get(this.REST_API_SERVER+"/"+"search/"+search, {headers:this.header});
   }
 
   public getRestByid(id){
+    this.getToken()
     return this.httpClient.get(this.REST_API_SERVER+"/"+id,{headers:this.header});
+  }
+
+  public getMenubyRestId(id){
+    this.getToken()
+    return this.httpClient.get(this.MENU_SERVER+"/"+id,{headers:this.header} );
   }
 }
