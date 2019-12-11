@@ -20,6 +20,8 @@ export class RestaurantComponent implements OnInit {
   type_of_food: string;
   @Input()
   no_rating: string;
+  @Input()
+  bgimg: string;
 
   price_rep ='';
   constructor( private router: Router) { }
