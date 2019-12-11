@@ -17,9 +17,9 @@
         <label> price</label> 
         </div>
         <div class="orderContainer orderitem hoveroveritem" *ngFor="let element of orderHistory" (click)="navigateToOrderSummary($event,element)">
-                <label> {{element.orderId}}</label>
-                <label> {{element.datetime}}</label>
-                <label> {{element.price}}</label> 
+                <label> {{element._id}}</label>
+                <label> {{element.createdAt}}</label>
+                <label> {{element.totalCost}}</label> 
         </div>
         </div>
 
