@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LocationServiceService } from '../location-service.service'
 import { RestaurantServiceService } from '../restaurant-service.service'
+import {Router} from '@angular/router'
 
 
 @Component({
@@ -17,7 +18,7 @@ export class HomepageCustomerComponent implements OnInit {
   location = "click here to get current location";
   restaurants = []
   
-  constructor(private restList: RestaurantServiceService,private loc: LocationServiceService) { 
+  constructor(private router: Router,private restList: RestaurantServiceService,private loc: LocationServiceService) { 
     this.getlocationData = this.getlocationData.bind(this);
     this.restList.sendGetRequest().subscribe((data: any[]) => {
       
@@ -55,6 +56,11 @@ export class HomepageCustomerComponent implements OnInit {
       this.restaurants = data;
 
     })
+  }
+  signout(){
+    localStorage.removeItem("token");
+    console.log(localStorage.getItem("token"))
+    this.router.navigateByUrl('/home');
   }
 
 
