@@ -114,3 +114,47 @@
   }
 
   
+  .menu_nav {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    margin: 0px 30px;
+    border-bottom: 2px solid #e7e7e7;;
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: white;    
+    }
+        
+
+    .categoryinput{
+        float: right;
+        input{
+            width: 200px;
+            height:40px;
+        }
+    }
+    li  {
+        margin-right: 10px;
+        cursor: pointer;
+        float: left;
+        display: block;
+        color: lightslategrey;
+        text-align: center;
+        padding: 14px 16px;
+        font-size: 20px;
+        text-decoration: none;
+    }
+
+    i {
+        color: #5FB709;
+    }
+
+    .order {
+        float: right;
+    }
+
+    
+}
