@@ -1,6 +1,6 @@
 
 Project Title:UBER EATS[Front End]
-FRONTEND Application like UBER Eats for using Angular.js,SCSS.
+FRONTEND Application similar to UBER Eats in functionality using Angular.js,SCSS.
 
 Getting Started: Installation
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
