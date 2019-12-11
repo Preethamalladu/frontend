@@ -98,11 +98,10 @@ body {
   }
 }
 
-.container {
-   
+.container1 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
- 
+  // width: 200%;
   grid-auto-rows: auto;
   grid-gap: 2rem;
   margin: 15px 15px;
@@ -133,7 +132,7 @@ body {
   padding: 15px;
     font-size: 30px;
   }
-  .container {
+  .container1 {
    
     display: grid;
     grid-template-columns: repeat(3, 1fr);
