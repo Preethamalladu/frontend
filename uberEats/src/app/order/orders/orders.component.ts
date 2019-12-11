@@ -12,15 +12,18 @@ import {NavbarcompComponent} from '../../navbarcart/navbarcomp/navbarcomp.compon
 })
 export class OrdersComponent implements OnInit {
   private data: any=[];
+  private state:any;
+  private restaurantId:string;
   private salesTax:number;
   private total:number;
   private isPayment:boolean=false;
   constructor(private router: Router) { 
   // var state=this.router.getCurrentNavigation().extras.state;
   console.log(999,this.router.getCurrentNavigation().extras);
-  var state=this.router.getCurrentNavigation().extras.state;
-  this.data=state.data;
-  this.isPayment=state.isPayment;
+  this.state=this.router.getCurrentNavigation().extras.state;
+  this.data=this.state.data;
+  this.isPayment=this.state.isPayment;
+  this.restaurantId=this.state.restaurantId;
   }
 
 
@@ -49,6 +52,6 @@ export class OrdersComponent implements OnInit {
  
   redirecttopayment(){
     
-    this.router.navigateByUrl('/payment');
+    this.router.navigateByUrl('/payment',{state:{isPayment:true,data:this.data,restaurantId:this.restaurantId,totalCost:this.total+this.salesTax}});
   }
 }
