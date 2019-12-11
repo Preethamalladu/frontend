@@ -1,0 +1,29 @@
+
+
+<div class="back" >
+        
+               
+      <navbarcomp></navbarcomp>  
+<div class="total_cont">
+        
+        <div class="ordersBody ">
+                <div class="orderContainer orderHeader">
+                <label>Order Info</label>
+                </div>
+        <div class="orderContainer orderitem">
+        
+        <label> OrderId</label>
+        <label> Order Date and time</label>
+        <label> price</label> 
+        </div>
+        <div class="orderContainer orderitem hoveroveritem" *ngFor="let element of orderHistory" (click)="navigateToOrderSummary($event,element)">
+                <label> {{element.orderId}}</label>
+                <label> {{element.datetime}}</label>
+                <label> {{element.price}}</label> 
+        </div>
+        </div>
+
+
+</div>
+
+</div>

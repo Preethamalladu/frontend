@@ -1,0 +1,160 @@
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+.card {
+    // box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border:1px solid #828282;
+    transition: 0.3s;
+    width: 25%;
+    height:400px;
+    // border-radius: 10px;
+    margin:20px 20px 20px 20px;
+    text-align:center;
+    display:inline-block;
+    img{
+        overflow:hidden;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    
+}
+
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card:hover button {
+    display: inline-block; /* On :hover of div show button */
+ }
+ .button {
+     margin:2px 2px 2px 2px;
+    display: none;
+}
+.card-container {
+    padding: 2px 16px;
+    .checkbox{
+        margin-top:10px;
+    }
+}
+.container{
+    margin:30px 30px;
+    .create-form {
+        // min-width: 150px;
+        // max-width: 400px;
+        // width: 100%;
+      }
+      
+    .inputfield {
+    // width: 100%;
+    width:30%;
+    margin-top:10px;
+    margin-bottom: 10px;
+    margin-left: 50px;  
+    }
+    .resBtn{
+        text-align: center;
+        margin-left:100px;
+        width:20%;
+    }
+}
+.btndiv{
+    float: right;
+}
+
+.img_place {
+    // background-image: url("https://images.unsplash.com/photo-1553964274-ac6059a35745?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80");
+    // ^ image of the restaurant / img of the food of restaurant
+    position: relative;
+    background-position: 30%;
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    height: 400px;
+  
+    .restaurant_info {
+      position: relative;
+      min-width: 20%;
+      min-height: 45%;
+      max-width: 35%;
+      max-height: 40%;
+      top: 25%;
+      background: white;
+  
+      .rest_content {
+          width: 100%;
+          margin-left: 50px;
+          .name {
+              font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+              letter-spacing: 1px;
+              font-size: 42px;
+              color: rgb(42, 43, 43);
+              font-style: bold;
+              margin-bottom: 10px;
+          }
+          .price_rating {
+              font-size: 16px;
+              letter-spacing: 1px;
+              color: lightslategrey;
+              width: max-content;
+              background-color: #F6F6F6;
+              margin-bottom: 15px;
+          }
+          .rating_time_deliveryfee {
+              background-color: #F6F6F6;
+              width: max-content;
+              font-size: 16px;
+              i {
+                  color: gold;
+              }
+              margin-bottom: 15px;
+          }
+      }
+  
+    }
+  
+    margin-bottom: 15px;
+  
+  }
+
+  
+  .menu_nav {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    margin: 0px 30px;
+    border-bottom: 2px solid #e7e7e7;;
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: white;    
+    }
+        
+
+    .categoryinput{
+        float: right;
+        input{
+            width: 200px;
+            height:40px;
+        }
+    }
+    li  {
+        margin-right: 10px;
+        cursor: pointer;
+        float: left;
+        display: block;
+        color: lightslategrey;
+        text-align: center;
+        padding: 14px 16px;
+        font-size: 20px;
+        text-decoration: none;
+    }
+
+    i {
+        color: #5FB709;
+    }
+
+    .order {
+        float: right;
+    }
+
+    
+}
