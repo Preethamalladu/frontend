@@ -44,7 +44,8 @@ export class PaymentComponent implements OnInit {
     try{
       console.log(23562374)
       
-      sessionStorage.setItem("userId","5df055d63dc6122b40a3425b")
+      // sessionStorage.setItem("userId","5df055d63dc6122b40a3425b")
+      this.userId=JSON.parse(localStorage.getItem("data")["_id"])
         var  paymentObj=this.paymentservice.createPayment(
 {
   "type": "credit card",

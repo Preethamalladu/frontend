@@ -13,12 +13,13 @@ export class OrderHistoryComponent implements OnInit {
   private orderHistory: any=[];
   constructor(private router: Router, private ordersService: OrderHistoryService) { 
 // var userId="5df05ac681681b04e4e27612";
-sessionStorage.setItem("userId","5df055d63dc6122b40a3425b");
+// sessionStorage.setItem("userId","5df055d63dc6122b40a3425b");
 var userId:String;
     try{
       
-      if(sessionStorage.getItem("userId")!=null){
-       userId=sessionStorage.getItem("userId")}
+      // if(sessionStorage.getItem("userId")!=null){
+      //  userId=sessionStorage.getItem("userId")}
+      userId=JSON.parse(localStorage.getItem("data"))["_id"]
   }
   catch(e){console.log("userId not found");}
   console.log(userId);
@@ -44,7 +45,7 @@ var userId:String;
     console.log(1234,element);
     var elementdata:any=[]
     element.items.map((x)=>{
-      elementdata.push(x[0])
+      elementdata.push(x)
     })
     console.log(elementdata);
     this.router.navigateByUrl('/orderSummary',{state:{isPayment:false,data:elementdata,restaurantId:element.restaurantId}});
