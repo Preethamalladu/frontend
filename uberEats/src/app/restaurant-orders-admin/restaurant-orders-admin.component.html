@@ -7,37 +7,44 @@
             <div class='inner-container'>
                 <div id="rightdiv" class="rightdiv">
                     <ul>
-                        <li><a class="a active" (click)="toggle('upcoming')">Upcoming</a></li>
+                        <li><a class="a" (click)="toggle('upcoming')">Upcoming</a></li>
                         <li><a class="a" (click)="toggle('pending')">Pending</a></li>
                         <li><a class="a" (click)="toggle('past')">Past</a></li>
                     </ul>
                 </div>
                 <div class="sidediv">
-                        <div class="container">
+                        <div class="container1">
                                 <div *ngFor="let res of orders" class="card">
                                     <!-- <img src={{res.img}} alt="Avatar" style="width:100%"> -->
                                     <div class="card-container">
                                         <div class="g1">
-                                            <h4><b>{{res.customer_name}}</b></h4> 
-                                        </div>
-                                        <div class="g3">
-                                            <p>{{res.address}}</p>  
+                                            <p><b>Name</b></p> 
                                         </div>
                                         <div>
-                                            <p>{{res.total}}</p>
+                                            <p><b>Price</b></p>
                                         </div>
-                                        <ng-container *ngFor="let o of res.orders">
+                                        <div class="g3">
+                                            <p><b>Quantity</b></p>  
+                                        </div>
+                                        
+                                        <ng-container *ngFor="let o of res.items">
                                             <div>
-                                                <p>{{o.itemname}}</p>
+                                                <p>{{o.name}}</p>
+                                            </div>
+                                            <div>
+                                                <p>${{o.price}}</p>
                                             </div>
                                             <div>
                                                 <p>{{o.quantity}}</p>
                                             </div>
-                                            <div>
-                                                <p>{{o.cost}}</p>
-                                            </div>
                                             
                                         </ng-container>
+                                        <!-- <div> -->
+                                            <!-- <p>Total Price : ${{res.totalCost}}</p> -->
+                                        <!-- </div> -->
+                                        <label>Total Price : ${{res.totalCost}}</label>
+                                        <div></div>
+                                        <mat-checkbox class="checkbox" name="complete" [ngModel]="complete" (click)="updateOrder(res)">Complete</mat-checkbox>
                                         
                                             
                                         

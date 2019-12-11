@@ -18,7 +18,7 @@ export class RestaurantOrdersAdminComponent implements OnInit {
   constructor(private restaurantAdminService:RestaurantAdminService, private route:ActivatedRoute) { }
   ngOnInit() {
     this.restaurant_id = this.route.snapshot.paramMap.get('id');
-    this.restaurantAdminService.getOrdersByRestaurant(this.restaurant_id,"Awaiting for Restaurant Approval").subscribe((data: any[])=>{
+    this.restaurantAdminService.getOrdersByRestaurant(this.restaurant_id,"Pending").subscribe((data: any[])=>{
       console.log(data);
       this.orders = data;
     })
@@ -28,25 +28,39 @@ export class RestaurantOrdersAdminComponent implements OnInit {
   toggle(val){
     if(val=='upcoming'){
       this.pendingtoggle=false;this.upcomingtoggle=true;this.pasttoggle=false;
-      this.restaurantAdminService.getOrdersByRestaurant(this.restaurant_id,"Awaiting for Restaurant Approval").subscribe((data: any[])=>{
+      this.restaurantAdminService.getOrdersByRestaurant(this.restaurant_id,"Pending").subscribe((data: any[])=>{
         console.log(data);
         this.orders = data;
       })
     }
     if(val=='pending'){
       this.pendingtoggle=true;this.upcomingtoggle=false;this.pasttoggle=false;
-      this.restaurantAdminService.getOrdersByRestaurant(this.restaurant_id,"Order InProgress").subscribe((data: any[])=>{
+      this.restaurantAdminService.getOrdersByRestaurant(this.restaurant_id,"InProgress").subscribe((data: any[])=>{
         console.log(data);
         this.orders = data;
       })
     }
     if(val=='past'){
       this.pendingtoggle=false;this.upcomingtoggle=false;this.pasttoggle=true;
-      this.restaurantAdminService.getOrdersByRestaurant(this.restaurant_id,"Order Complete").subscribe((data: any[])=>{
+      this.restaurantAdminService.getOrdersByRestaurant(this.restaurant_id,"Complete").subscribe((data: any[])=>{
         console.log(data);
         this.orders = data;
       })
     }
     console.log(this.pendingtoggle,this.upcomingtoggle,this.pasttoggle);
   }
+  updateOrder(res){
+      if(res.status=="Pending"){
+        this.restaurantAdminService.editOrder(res._id,{"status":"InProgress"}).subscribe((data: any[])=>{
+          this.toggle("pending");
+        })
+      }
+      else if(res.status=="InProgress"){
+        this.restaurantAdminService.editOrder(res._id,{"status":"Complete"}).subscribe((data: any[])=>{
+          this.toggle("past");
+        })
+      }
+      
+  }
+  
 }

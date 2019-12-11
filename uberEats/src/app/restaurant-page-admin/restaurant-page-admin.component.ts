@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 @Component({
   selector: 'app-restaurant-page-admin',
   templateUrl: './restaurant-page-admin.component.html',
@@ -10,7 +10,7 @@ export class RestaurantPageAdminComponent implements OnInit {
   analytics=false;
   orderspage=false;
   restaurant_id="";
-  constructor(private route:ActivatedRoute) { }
+  constructor(private route:ActivatedRoute, private router:Router) { }
   ngOnInit() {
     this.restaurant_id = this.route.snapshot.paramMap.get('id');
     var header = document.getElementById("topnav2");
@@ -39,5 +39,8 @@ export class RestaurantPageAdminComponent implements OnInit {
       this.restaurantpage=false;this.analytics=false;this.orderspage=true;
     }
     console.log(this.restaurantpage,this.analytics,this.orderspage);
+  }
+  logout(){
+    this.router.navigate(['/admin']);
   }
 }
