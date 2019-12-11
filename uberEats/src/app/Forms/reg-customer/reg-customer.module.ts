@@ -11,7 +11,7 @@ import { RegisterLoginComponent } from './reg-customer.component';
 import { RegisterRoutingModule } from './reg-customer-routing.module';
 //import { Customer } from './Model/customer.component';
 import { RegisterCustomerService } from '../../register-customer.service';
-import { AlertService } from '@app/core/Alert.service';
+import { AlertService } from '../../Alert.service';
 
 @NgModule({
   imports: [

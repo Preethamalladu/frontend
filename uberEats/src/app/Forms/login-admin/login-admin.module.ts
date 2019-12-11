@@ -10,8 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminLoginRoutingModule} from './login-admin.routing';
 import { AdminLoginComponent } from './login-admin.component';
 //import { Customer } from './Model/customer.component';
-import { AdminService } from '../../restaurant-admin.service';
-import { AlertService } from '@app/core/Alert.service';
+import { RestaurantAdminService } from '../../restaurant-admin.service';
+import { AlertService } from '../../Alert.service';
 import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
@@ -31,6 +31,6 @@ import { AgmCoreModule } from '@agm/core';
   declarations: [
     AdminLoginComponent,
   ],
-  providers: [AdminService, AlertService]
+  providers: [RestaurantAdminService, AlertService]
 })
 export class AdminLoginModule { }

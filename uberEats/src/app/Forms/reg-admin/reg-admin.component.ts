@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminService } from '../../restaurant-admin.service';
+import { RestaurantAdminService } from '../../restaurant-admin.service';
 import { Admin } from '../Model/Admin.component';
 import { Router } from '@angular/router';
-import { AlertService } from '@app/core/Alert.service';
+import { AlertService } from '../../Alert.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-register-admin',
@@ -15,7 +15,7 @@ export class RegisterAdminComponent implements OnInit {
   loading = false;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private adminService: AdminService,
+  constructor(private formBuilder: FormBuilder, private adminService: RestaurantAdminService,
               private router: Router,
               private alertService: AlertService) {
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertService } from '@app/core/Alert.service';
-import { AdminService } from '../../restaurant-admin.service';
+import { AlertService } from '../../Alert.service';
+import { RestaurantAdminService} from '../../restaurant-admin.service';
 import { Admin } from '../Model/Admin.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -17,7 +17,7 @@ export class AdminLoginComponent implements OnInit {
   returnUrl: string;
   restLoginForm!: FormGroup;
 
-  constructor(private adminService: AdminService,
+  constructor(private adminService: RestaurantAdminService,
               private route: ActivatedRoute,
               private router: Router,
               private alertService: AlertService) { }

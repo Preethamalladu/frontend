@@ -10,7 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeRoutingModule} from './home-routing.module';
 import { HomeComponent } from './home.component';
 //import { RegisterCustomerService } from '@app/core/register-customer.service';
-import { AlertService } from '@app/core/Alert.service';
+import { AlertService } from '../../Alert.service';
 
 @NgModule({
   imports: [
