@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {Router} from '@angular/router';
+import {NavbarcompComponent} from '../../navbarcart/navbarcomp/navbarcomp.component';
 
 @Component({
   selector: 'app-successpayment',
@@ -6,11 +8,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./successpayment.component.scss']
 })
 export class SuccesspaymentComponent implements OnInit {
-  @Input() orderId : any;
-  constructor() { }
+  private orderId : string;
+  constructor(private router:Router) { 
+
+    this.orderId=this.router.getCurrentNavigation().extras.state.data.orderId;
+  }
 
   ngOnInit() {
-    this.orderId=1232345;
+
+    
+    // console.log
   }
 
 }
