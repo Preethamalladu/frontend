@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   returnUrl: string;
   results;
+  submitted = false;
 
   constructor( private authenticationService : RegisterCustomerService,
                private route: ActivatedRoute,
@@ -35,35 +36,32 @@ export class LoginComponent implements OnInit {
   }
 
   get f() { return this.loginForm.controls; }
+
   // tslint:disable-next-line:one-line
   onSubmit(){
     this.loading = true;
-    let email = this.customer.email;
-    let password = this.customer.password;
+    let email = this.loginForm.value.username;
+    let password = this.loginForm.value.password;
     this.authenticationService.login(email, password)
-    .subscribe((data) =>
-    {
-
-
-      /*if (data. == 404){
+    .subscribe((data: any) =>{
+      console.log(data);
+      if (data == null){
         alert("Invalid username or password");
-      }
-      else if (data.status == 500) {
-          alert("Please check your internet connection and try again later");
-      }
-      else{*/
+      } else{
         this.authenticationService.setIsLoggedIn();
-      /*  sessionStorage.setItem("id", data.id);
-        sessionStorage.setItem("firstName", data.firstName);
-        sessionStorage.setItem("lastName", data.lastName);
-        sessionStorage.setItem("email", data.email);
-        sessionStorage.setItem("password", data.password);
-        sessionStorage.setItem("creditCard", data.creditCard)
-        sessionStorage.setItem("CVV", data.CVV)
-        sessionStorage.setItem("expiryDate", data.expiryDate)*/
-        alert('Login successful');
-        this.router.navigate(['/login/username/userRole=1']);
-     // }
-    });
+         sessionStorage.setItem("id", data.id);
+         sessionStorage.setItem("firstName", data.firstName);
+         sessionStorage.setItem("lastName", data.lastName);
+         sessionStorage.setItem("email", data.email);
+         sessionStorage.setItem("password", data.password);
+         sessionStorage.setItem("creditCard", data.creditCard)
+         sessionStorage.setItem("CVV", data.CVV);
+         sessionStorage.setItem("expiryDate", data.expiryDate);
+         alert('Login successful');
+         this.router.navigate(['/login/username/userRole=1']);
+      }
+    },
+    error => console.log('oops', error)
+    );
   }
 }
