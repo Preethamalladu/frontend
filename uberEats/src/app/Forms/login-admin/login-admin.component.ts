@@ -49,7 +49,7 @@ export class AdminLoginComponent implements OnInit {
           sessionStorage.setItem('email', data.email);
           sessionStorage.setItem('password', data.password);
           alert('Admin Login successful');
-          this.router.navigate(['/login.html/username/userRole=3']);
+          this.router.navigate(['/admin/homepage']);
         }
     });
 

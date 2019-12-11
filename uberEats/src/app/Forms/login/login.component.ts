@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
          sessionStorage.setItem("CVV", data.CVV);
          sessionStorage.setItem("expiryDate", data.expiryDate);
          alert('Login successful');
-         this.router.navigate(['/login/username/userRole=1']);
+         this.router.navigate(['/customer/homepage']);
       }
     },
     error => console.log('oops', error)
