@@ -44,7 +44,7 @@ export class AdminLoginComponent implements OnInit {
         } else if (data == null) {
             alert('Please check your internet connection and try again later');
         } else {
-          this.adminService.setIsLoggedIn();
+          //this.adminService.setIsLoggedIn();
           //sessionStorage.setItem('id', data.Id);
           sessionStorage.setItem('email', data.email);
           sessionStorage.setItem('password', data.password);

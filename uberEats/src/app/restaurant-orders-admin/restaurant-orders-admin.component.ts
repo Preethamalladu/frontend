@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as Chartist from 'chartist';
+//import * as Chartist from 'chartist';
 declare var require: any
 var CanvasJS = require('../canvasjs-2.3.2/canvasjs.min');
 import { RestaurantAdminService } from '../restaurant-admin.service';
@@ -21,9 +21,9 @@ export class RestaurantOrdersAdminComponent implements OnInit {
     this.restaurantAdminService.getOrdersByRestaurant(this.restaurant_id,"Awaiting for Restaurant Approval").subscribe((data: any[])=>{
       console.log(data);
       this.orders = data;
-    }) 
+    })
 
-    
+
   }
   toggle(val){
     if(val=='upcoming'){
@@ -31,21 +31,21 @@ export class RestaurantOrdersAdminComponent implements OnInit {
       this.restaurantAdminService.getOrdersByRestaurant(this.restaurant_id,"Awaiting for Restaurant Approval").subscribe((data: any[])=>{
         console.log(data);
         this.orders = data;
-      }) 
+      })
     }
     if(val=='pending'){
       this.pendingtoggle=true;this.upcomingtoggle=false;this.pasttoggle=false;
       this.restaurantAdminService.getOrdersByRestaurant(this.restaurant_id,"Order InProgress").subscribe((data: any[])=>{
         console.log(data);
         this.orders = data;
-      }) 
+      })
     }
     if(val=='past'){
       this.pendingtoggle=false;this.upcomingtoggle=false;this.pasttoggle=true;
       this.restaurantAdminService.getOrdersByRestaurant(this.restaurant_id,"Order Complete").subscribe((data: any[])=>{
         console.log(data);
         this.orders = data;
-      }) 
+      })
     }
     console.log(this.pendingtoggle,this.upcomingtoggle,this.pasttoggle);
   }
