@@ -19,6 +19,10 @@ export class RestaurantAdminService {
     // localStorage.getItem("email");
     this.headers = {"access-token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjVkZjAxNThjY2NlMDQwNTIyMzQ5ZTgzZCIsInJvbGUiOiJhZG1pbiJ9.vifMyXutwFK1KGytpiGM7_HaoYFIP_sxdrYXx9yWEJY"};
   }
+  getToken(){
+    var localdata =  localStorage.getItem("token");
+    this.headers["access-token"] = localdata
+  }
   postNewAdmin(admin: Admin) {
     // tslint:disable-next-line: max-line-length
     return this.httpClient.post(this.ROOT_API_SERVER+"/admin", admin, { headers: this.headers1 = this.headers1.set('api-key', '54asdkj1209nksnda') })
@@ -45,56 +49,70 @@ export class RestaurantAdminService {
 }
   // get all tasks
   public getRestaurantData(){
+    this.getToken();
     return this.httpClient.get(this.RESTAURANT_API_SERVER+"/admin/",{headers:this.headers});
   }
   // get task by id
   public getRestaurantByID(id){
+    this.getToken();
     return this.httpClient.get(this.RESTAURANT_API_SERVER+"/"+id,{headers:this.headers});
   }
   // create task
   public createRestaurant(opost){
+    this.getToken();
     return this.httpClient.post(this.RESTAURANT_API_SERVER, opost,{headers:this.headers});
   }
   // update task
   public editRestaurant(id, opost){
+    this.getToken();
     return this.httpClient.put(this.RESTAURANT_API_SERVER+"/"+id, opost,{headers:this.headers});
   }
   // delete tasks
   public deleteRestaurant(id){
+    this.getToken();
     return this.httpClient.delete<void>(`${this.RESTAURANT_API_SERVER}/${id}`,{headers:this.headers})
   }
 
   // get all tasks
   public getMenuByRestaurant(res_id){
+    this.getToken();
     return this.httpClient.get(this.MENU_API_SERVER+"/restaurant/"+res_id,{headers:this.headers});
   }
   public getTotalOrdersAnalytics(res_id){
+    this.getToken();
     return this.httpClient.get(this.ROOT_API_SERVER+"/analytics/orders/"+res_id,{headers:this.headers});
   }
   public getTotalRevenueAnalytics(res_id){
+    this.getToken();
     return this.httpClient.get(this.ROOT_API_SERVER+"/analytics/revenue/"+res_id,{headers:this.headers});
   }
   public getCategorywiseAnalytics(res_id){
+    this.getToken();
     return this.httpClient.get(this.ROOT_API_SERVER+"/analytics/category/"+res_id,{headers:this.headers});
   }
   // get task by id
   public getMenuByID(id){
+    this.getToken();
     return this.httpClient.get(this.MENU_API_SERVER+"/"+id,{headers:this.headers});
   }
   // create task
   public createMenu(opost){
+    this.getToken();
     return this.httpClient.post(this.MENU_API_SERVER, opost,{headers:this.headers});
   }
   // update task
   public editMenu(id, opost){
+    this.getToken();
     return this.httpClient.put(this.MENU_API_SERVER+"/"+id, opost,{headers:this.headers});
   }
   // delete tasks
   public deleteMenu(id){
+    this.getToken();
     return this.httpClient.delete<void>(`${this.MENU_API_SERVER}/${id}`,{headers:this.headers})
   }
 
   public getOrdersByRestaurant(res_id,filter){
+    this.getToken();
     return this.httpClient.get(this.ORDER_API_SERVER+"/"+res_id+"/"+filter,{headers:this.headers});
   }
 
