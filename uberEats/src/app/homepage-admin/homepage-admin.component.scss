@@ -15,10 +15,19 @@ body {
     color: black;
     text-align: center;
     padding: 14px 23px;
-    margin-right: 70px;
-    margin-left: 20px;
+    // margin-right: 70px;
+    // margin-left: 20px;
     text-decoration: none;
-    font-size: 35px;
+    font-size: 25px;
+  }
+  .title{
+    text-align: center;
+  }
+  .signout{
+    float: right;
+  }
+  span{
+    color:#57B709;
   }
   h2 {
     float: left;
