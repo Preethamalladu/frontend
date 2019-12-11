@@ -234,8 +234,8 @@ export class RestaurantHomeMenuComponent implements OnInit {
     Object.keys(name).forEach(function(key){
       send_out.push({"name":key, "price":price[key], "quantity":name[key], "category":cat[key], "restauantId":rest_id})
     })
-
-    this.router.navigateByUrl('/orderSummary', {state:{isPayment:true, data:send_out}});
+    console.log(rest_id)
+    this.router.navigateByUrl('/orderSummary', {state:{isPayment:true, data:send_out, "restauantId":rest_id}});
 
     
   }
