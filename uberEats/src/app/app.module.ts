@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CustomerProfileComponent } from './profile/customer-profile/customer-profile.component';
-import { RestaurantProfileComponent } from './profile/restaurant-profile/restaurant-profile.component';
+// import { CustomerProfileComponent } from './profile/customer-profile/customer-profile.component';
+// import { RestaurantProfileComponent } from './profile/restaurant-profile/restaurant-profile.component';
 import { RouterModule } from '@angular/router';
 import { OrdersComponent } from './order/orders/orders.component';
 import { FormsModule } from '@angular/forms';
@@ -22,14 +22,14 @@ import { RestaurantHomeMenuComponent } from './restaurant-home-menu/restaurant-h
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    CustomerProfileComponent,
-    RestaurantProfileComponent,
-    CustomerProfileComponent,
-    RestaurantProfileComponent,
+    // CustomerProfileComponent,
+    // RestaurantProfileComponent,
+    // CustomerProfileComponent,
+    // RestaurantProfileComponent,
     OrdersComponent,
   HomepageCustomerComponent,
     RestaurantComponent,
-    RestaurantHomeMenuComponent
+    RestaurantHomeMenuComponent,
     OrderHistoryComponent,
     PaymentComponent,
     SuccesspaymentComponent,
@@ -44,11 +44,7 @@ import { RestaurantHomeMenuComponent } from './restaurant-home-menu/restaurant-h
     AppRoutingModule,
   HttpClientModule,
     RouterModule.forRoot([
-      {
-        path: 'profile/customer/:customerID', 
-        component: CustomerProfileComponent,
-        pathMatch:"full"
-      },
+      
       {
         path: 'profile/restaurant/:customerID', 
         component: RestaurantProfileComponent,
