@@ -58,6 +58,15 @@
             <li (click) = "scroll(3)">Contact</li>
             
         </ul> -->
+        <div class="alert_box" *ngIf ="!isAlert">
+            <div (click)="toggleAlert()"class="cross">
+                    <i class="fas fa-times" style="color: black;"></i>
+            </div>
+            <p>
+                Oops!.. Looks like the item isnt available rightnow
+            </p>
+            
+        </div>
         <div class="checkout-div" *ngIf = "!isShow">
                 <div (click)="toggleDisplay()"class="cross">
                     <i class="fas fa-times" style="color: black;"></i>

@@ -53,7 +53,7 @@ export class RestaurantHomeMenuComponent implements OnInit {
           description: "desc",
           img: "https://picsum.photos/200",
           price: 10,
-          isavailable: false
+          isavailable: true
         },
         {
           name: "name",
@@ -72,7 +72,7 @@ export class RestaurantHomeMenuComponent implements OnInit {
           description: "desc",
           img: "https://picsum.photos/200",
           price: 10,
-          isavailable: false
+          isavailable: true
         },
         {
           name: "name",
@@ -86,7 +86,7 @@ export class RestaurantHomeMenuComponent implements OnInit {
           description: "desc",
           img: "https://picsum.photos/200",
           price: 10,
-          isavailable: false
+          isavailable: true
         },
       ]
     }
@@ -102,6 +102,7 @@ export class RestaurantHomeMenuComponent implements OnInit {
   rating = "";
   no_rating = "";
   type_of_food = "";
+  isAlert = true;
   constructor(private router: Router,private rest: RestaurantServiceService,private loc: LocationServiceService, private route: ActivatedRoute) {
     this.getlocationData = this.getlocationData.bind(this);
     
@@ -172,12 +173,21 @@ export class RestaurantHomeMenuComponent implements OnInit {
     this.isShow = !this.isShow;
   }
 
+  toggleAlert(){
+    this.isAlert = !this.isAlert;
+  }
+
   addItem(dish){
-    this.cart_data.push(dish)
-    this.isShow  = false
-    this.total_price +=  dish["price"]
-    this.total_price = parseFloat(this.total_price.toFixed(2));
-    localStorage.setItem('order', JSON.stringify(this.cart_data))
+    if(dish["isavailable"]){
+      this.cart_data.push(dish)
+      this.isShow  = false
+      this.total_price +=  dish["price"]
+      this.total_price = parseFloat(this.total_price.toFixed(2));
+      localStorage.setItem('order', JSON.stringify(this.cart_data))
+    }else{
+      this.isAlert = !this.isAlert;
+    }
+    
     
   }
 
