@@ -1,4 +1,20 @@
+import {platformBrowser} from '@angular/platform-browser';
 import { BrowserModule } from '@angular/platform-browser';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { LoginModule } from './Forms/login/login.module';
+import { RegisterModule } from './Forms/reg-customer/reg-customer.module';
+import { AdminLoginModule } from './Forms/login-admin/login-admin.module';
+import { RegisterAdminModule } from './Forms/reg-admin/reg-admin.module';
+
+import { RegisterCustomerService } from './register-customer.service';
+import { AlertService } from '@app/core/Alert.service';
+import { RestaurantService } from './restaurant-service.service';
+import { AlertComponent } from './Directives/alert/alert.component';
+
+import { AgmCoreModule } from '@agm/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeModule } from './Home/home/home.module';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +50,7 @@ import { RestaurantHomeMenuComponent } from './restaurant-home-menu/restaurant-h
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
+    AlertComponent
     HomepageAdminComponent,
     CreateRestaurantComponent,
     EditRestaurantAdminComponent,
@@ -52,6 +69,17 @@ import { RestaurantHomeMenuComponent } from './restaurant-home-menu/restaurant-h
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    LoginModule,
+    RegisterModule,
+    AdminLoginModule,
+    RegisterAdminModule,
+    HomeModule,
+    //DriverRegisterModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBI-fMrs51j5nRg0fw6xLsMMSljUNnOkfo'
+    }),
+    NoopAnimationsModule,
     FormsModule,
     HttpClientModule,
     MatInputModule,
@@ -89,6 +117,9 @@ import { RestaurantHomeMenuComponent } from './restaurant-home-menu/restaurant-h
       }
     ]),
     BrowserAnimationsModule
+  ],
+  providers: [RegisterCustomerService, AlertService, RestaurantService],
+  bootstrap: [AppComponent]
   ]
 })
 

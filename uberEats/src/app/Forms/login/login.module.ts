@@ -8,7 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 //import { Customer } from './Model/customer.component';
-import { RegisterCustomerService } from '@app/core/register-customer.service';
+import { RegisterCustomerService } from '../../register-customer.service';
 
 @NgModule({
   imports: [

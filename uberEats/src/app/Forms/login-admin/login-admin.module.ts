@@ -10,7 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminLoginRoutingModule} from './login-admin.routing';
 import { AdminLoginComponent } from './login-admin.component';
 //import { Customer } from './Model/customer.component';
-import { AdminService } from '@app/core/admin.service';
+import { AdminService } from '../../restaurant-admin.service';
 import { AlertService } from '@app/core/Alert.service';
 import { AgmCoreModule } from '@agm/core';
 
