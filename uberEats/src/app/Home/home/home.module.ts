@@ -18,8 +18,8 @@ import { AlertService } from '../../Alert.service';
     CommonModule,
     ReactiveFormsModule,
     TranslateModule,
-    NgbModule,
-    FormsModule
+    FormsModule,
+    NgbModule
 
   ],
   declarations: [

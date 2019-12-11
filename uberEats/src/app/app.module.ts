@@ -83,30 +83,6 @@ import { RestaurantHomeMenuComponent } from './restaurant-home-menu/restaurant-h
     MatToolbarModule,
     AppRoutingModule,
     RouterModule.forRoot([
-      {
-        path: 'orderSummary', 
-        component: OrdersComponent,
-        pathMatch:"full",
-        // data: [{ name: 'Heroes List' },{ name: 'Heroes List' },{ name: 'Heroes List' },{ name: 'Heroes List' }]
-      },
-      {
-        path: 'orderHistory', 
-        component: OrderHistoryComponent,
-        pathMatch:"full"
-        // state: [{ name: 'Heroes List' },{ name: 'Heroes List' },{ name: 'Heroes List' },{ name: 'Heroes List' }]
-      },
-      {
-        path: 'payment', 
-        component: PaymentComponent,
-        pathMatch:"full"
-        // state: [{ name: 'Heroes List' },{ name: 'Heroes List' },{ name: 'Heroes List' },{ name: 'Heroes List' }]
-      },
-      {
-        path: 'success', 
-        component: SuccesspaymentComponent,
-        pathMatch:"full"
-        // state: [{ name: 'Heroes List' },{ name: 'Heroes List' },{ name: 'Heroes List' },{ name: 'Heroes List' }]
-      }
     ]),
     BrowserAnimationsModule
   ],

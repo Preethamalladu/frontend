@@ -13,6 +13,10 @@ import { RestaurantPageAdminComponent } from '../app/restaurant-page-admin/resta
 import {HomepageCustomerComponent} from '../app/homepage-customer/homepage-customer.component';
 import { RestaurantComponent } from '../app/restaurant/restaurant.component';
 import { RestaurantHomeMenuComponent } from './restaurant-home-menu/restaurant-home-menu.component';
+import { OrdersComponent } from './order/orders/orders.component';
+import { OrderHistoryComponent } from './orderHistory/order-history/order-history.component';
+import { PaymentComponent } from './payment/payment/payment.component';
+import { SuccesspaymentComponent } from './payment/successpayment/successpayment.component';
 
 const routes: Routes = [
   {path: 'customer/homepage', component: HomepageCustomerComponent, pathMatch: 'full'},
@@ -25,8 +29,34 @@ const routes: Routes = [
   { path: 'admin/register', component: RegisterAdminComponent },
   { path: 'admin', component: AdminLoginComponent },
   { path: 'home', component: HomeComponent },
+  
+  {
+    path: 'orderSummary', 
+    component: OrdersComponent,
+    pathMatch:"full"
+    
+  },
+  {
+    path: 'orderHistory', 
+    component: OrderHistoryComponent,
+    pathMatch:"full"
+    
+  },
+  {
+    path: 'payment', 
+    component: PaymentComponent,
+    pathMatch:"full"
+    
+  },
+  {
+    path: 'success', 
+    component: SuccesspaymentComponent,
+    pathMatch:"full"
+    
+  },
   { path: '**', redirectTo: '#' }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

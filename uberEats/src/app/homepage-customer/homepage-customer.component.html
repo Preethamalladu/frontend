@@ -15,7 +15,8 @@
                 <button type="submit" (click) = "search()"><i class="fa fa-search"></i></button>
               <!-- </form>   -->
             </div>
-            <a href="/home" class="sign">Sign Out</a>
+            <div class="sign" (click)="signout()">Sign Out</div>
+            <div class="sign" (click)="orderHistory()">OrderHistory</div>
           </div>
           
 
@@ -38,7 +39,7 @@
           
           <div class="container1">
               
-            <app-restaurant *ngFor="let res of restaurants" name={{res.name}} price={{res.price}} rating={{res.rating}} id = {{res._id}} type_of_food = {{res.type_of_food}} no_rating = {{res.no_rating}} ></app-restaurant>
+            <app-restaurant *ngFor="let res of restaurants " name={{res.name}} price={{res.price}} rating={{res.rating}} id = {{res._id}} type_of_food = {{res.type_of_food}} no_rating = {{res.no_rating}} bgimg = {{res.bgimg}} ></app-restaurant>
         </div>
 
     </body>

@@ -20,6 +20,8 @@ export class RestaurantComponent implements OnInit {
   type_of_food: string;
   @Input()
   no_rating: string;
+  @Input()
+  bgimg: string;
 
   price_rep ='';
   constructor( private router: Router) { }
@@ -28,11 +30,13 @@ export class RestaurantComponent implements OnInit {
     for(var counter:number = 0; counter < +this.price; counter++){
       this.price_rep += '$'
     }
+    console.log(this.id,"sdfasdfasdf")
     
   }
 
   next_page(id){
-    this.router.navigate(['restaurant/homepage/'+id]); // add id here and change in routing
+    console.log(this.id);
+    this.router.navigate(['restaurant/homepage/'+this.id]); // add id here and change in routing
     
   }
 
