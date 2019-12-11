@@ -52,7 +52,7 @@ export class RegisterAdminComponent implements OnInit {
     this.adminService.postNewAdmin(this.admin).subscribe(
        data => {
                  this.alertService.success('Registration successful', true);
-                 this.router.navigate(['login']);
+                 this.router.navigate(['admin']);
                 // this.customer = new Customer();
              },
              error => {

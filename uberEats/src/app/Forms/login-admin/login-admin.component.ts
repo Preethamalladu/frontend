@@ -39,19 +39,20 @@ export class AdminLoginComponent implements OnInit {
     //this.restaurant.password = this.restLoginForm.value.password;
     this.loading = true;
     this.adminService.login(this.admin.email,this.admin.password).subscribe((data : any) => {
-        if (data == 404) {
-          alert('Invalid username or password');
+        if (!data.token) {
+          this.alertService.error('Invalid Credentials', true);
         } else if (data == null) {
-            alert('Please check your internet connection and try again later');
+          this.alertService.error('Internal Servel Error', true);
         } else {
           //this.adminService.setIsLoggedIn();
           //sessionStorage.setItem('id', data.Id);
           localStorage.setItem('data', data);
           localStorage.setItem('token', data.token);
-          alert('Admin Login successful');
+          this.alertService.success('Login Succesful');
           this.router.navigate(['/admin/homepage']);
         }
-    });
-
+    },
+    error => this.alertService.error(error)
+    );
   }
 }
