@@ -3,7 +3,7 @@ import { RegisterCustomerService } from '../../register-customer.service';
 import { Customer } from '../Model/customer.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertService } from '@app/core//Alert.service';
+import { AlertService } from '../..//Alert.service';
 
 @Component({
   selector: 'app-login',

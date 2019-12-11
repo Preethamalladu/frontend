@@ -10,8 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterAdminComponent } from './reg-admin.component';
 import { RegisterAdminRoutingModule } from './reg-admin-routing.module';
 //import { Customer } from './Model/customer.component';
-import { AdminService } from '../../restaurant-admin.service';
-import { AlertService } from '@app/core/Alert.service';
+import { RestaurantAdminService } from '../../restaurant-admin.service';
+import { AlertService } from '../../Alert.service';
 
 @NgModule({
   imports: [
@@ -26,6 +26,6 @@ import { AlertService } from '@app/core/Alert.service';
   declarations: [
     RegisterAdminComponent,
   ],
-  providers: [AdminService, AlertService]
+  providers: [RestaurantAdminService, AlertService]
 })
 export class RegisterAdminModule { }

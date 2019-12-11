@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './Forms/login/login.component';
 import { RegisterLoginComponent } from './Forms/reg-customer/reg-customer.component';
-import { RestaurantRegisterComponent } from './Forms/restaurant-reg/restaurant-reg.component';
 import { AdminLoginComponent} from './Forms/login-admin/login-admin.component';
 import { RegisterAdminComponent} from './Forms/reg-admin/reg-admin.component';
 import { HomeComponent } from './Home/home/home.component';
@@ -23,7 +22,6 @@ const routes: Routes = [
   { path: 'admin/restaurant/:id', component: RestaurantPageAdminComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterLoginComponent },
-  { path: 'restuarant/register', component: RestaurantRegisterComponent },
   { path: 'admin/register', component: RegisterAdminComponent },
   { path: 'admin', component: AdminLoginComponent },
   { path: 'home', component: HomeComponent },

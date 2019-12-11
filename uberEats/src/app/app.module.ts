@@ -1,6 +1,6 @@
 import {platformBrowser} from '@angular/platform-browser';
 import { BrowserModule } from '@angular/platform-browser';
-import { TranslateModule } from '@ngx-translate/core';
+// import { TranslateModule } from '@ngx-translate/core';
 
 import { LoginModule } from './Forms/login/login.module';
 import { RegisterModule } from './Forms/reg-customer/reg-customer.module';
@@ -8,8 +8,7 @@ import { AdminLoginModule } from './Forms/login-admin/login-admin.module';
 import { RegisterAdminModule } from './Forms/reg-admin/reg-admin.module';
 
 import { RegisterCustomerService } from './register-customer.service';
-import { AlertService } from '@app/core/Alert.service';
-import { RestaurantService } from './restaurant-service.service';
+// import { AlertService } from '@app/core/Alert.service';
 import { AlertComponent } from './Directives/alert/alert.component';
 
 import { AgmCoreModule } from '@agm/core';
@@ -41,11 +40,9 @@ import { HomepageCustomerComponent } from './homepage-customer/homepage-customer
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { RestaurantHomeMenuComponent } from './restaurant-home-menu/restaurant-home-menu.component';
 @NgModule({
-  providers: [],
-  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    AlertComponent
+    AlertComponent,
     HomepageAdminComponent,
     CreateRestaurantComponent,
     EditRestaurantAdminComponent,
@@ -113,9 +110,9 @@ import { RestaurantHomeMenuComponent } from './restaurant-home-menu/restaurant-h
     ]),
     BrowserAnimationsModule
   ],
-  providers: [RegisterCustomerService, AlertService, RestaurantService],
+  providers: [RegisterCustomerService],
   bootstrap: [AppComponent]
-  ]
+  
 })
 
 export class AppModule { }
