@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="topnav">
+            <a href="/customer/homepage">Uber<span>Eats</span></a>
+            <div class = "location" (click) = "test()">
+                <i class="fas fa-location-arrow"></i>
+                <span>&nbsp; {{location}}</span>
+            </div>
+            <div class="search-container">
+              <!-- <form > -->
+                <input (input)="tcode=$event.target.value" type="text" placeholder="Search.." name="search">
+                <button type="submit" (click) = "search()"><i class="fa fa-search"></i></button>
+              <!-- </form>   -->
+            </div>
+            <a href="/home" class="sign">Sign Out</a>
+          </div>
+          
+
+          <div class = "img_place">
+              <span>
+                Your favorite food, delivered with Uber
+              </span>
+          </div>
+
+          <div class = "nearest">
+            <div class = "inner_nearest">
+              Popular Near You
+            </div>
+            
+            <div class="container">
+                <app-restaurant *ngFor="let res of restaurants | slice:0:5;" name={{res.name}} price={{res.price}} rating={{res.rating}} id = {{res._id}} type_of_food = {{res.type_of_food}} no_rating = {{res.no_rating}} ></app-restaurant>
+            </div>
+            <hr>
+          </div>
+          
+          <div class="container">
+              
+            <app-restaurant *ngFor="let res of restaurants" name={{res.name}} price={{res.price}} rating={{res.rating}} id = {{res._id}} type_of_food = {{res.type_of_food}} no_rating = {{res.no_rating}} ></app-restaurant>
+        </div>
+
+    </body>
+</html>

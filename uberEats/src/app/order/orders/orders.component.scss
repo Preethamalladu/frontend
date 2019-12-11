@@ -1,0 +1,61 @@
+input {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    
+    border: 1px solid #ddd;
+  padding: 8px;
+  }
+label {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    
+    border: 1px solid #ddd;
+  padding: 8px;
+  }
+form{
+    height: 100%;
+    width: 100%;
+    // border: 2px solid black;
+}
+// form div:nth-child(even){background-color: #f2f2f2;}
+// form div:hover {background-color: #ddd;}
+
+// form div input {float:left;margin:auto;display:inline-block;}
+div input {display:inline-block;width:22%;height:25px}
+div label:first-child{display:inline-block;width:66%;height:25px;padding-left: 26px; padding-right: 26px;background:#262626 ;color:white}
+div label:nth-child(2){display:inline-block;width:22%;height:25px;background-color: #f2f2f2;}
+form div
+form>input{background-color: #262626; color:white;}
+form div input:nth-child(even){background-color: #f2f2f2;}
+label{height:30px;}
+
+.btn {    background: #000000;cursor: pointer;padding: 12px 16px;   
+     line-height: 24px;    font-size: 16px;
+    box-sizing: border-box;color:white;
+    float:right;
+    margin:15px 0 auto auto;
+    
+
+}
+.orderSummary{background: #5FB709;}
+
+h1{text-align: center;background: #262626;line-height:3em;vertical-align: middle;font-size: 1.7em;color:white}
+span{float:right;margin:0 30px auto auto;cursor: pointer;}
+
+.back{position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://cdn-image.foodandwine.com/sites/default/files/1513004301/uber-eats-hangover-box-FT-BLOG1217.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;}
+.total_cont {
+      // width: 50%;
+      height: 75%;
+      
+      position: absolute;
+      // top: 10%;
+      
+      left: 15%;
+      right:15%;
+    }

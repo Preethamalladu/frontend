@@ -1,0 +1,18 @@
+<div class="paymentpage">
+<form class="paymentpage" autocomplete="">
+<input class="defaultDetailsBtn" type="button" value="Use Default Payment Details">
+
+<hr>
+<label for="paymentdetails">Payment Details</label>
+<div class="carddetails cardStyle">
+<input type="text" id="cn" name="cn" min="1" max="15" [(ngModel)]="cardnumber"  [ngModelOptions]="{standalone: true}" autocomplete="off">
+</div >
+<div class="otherdetails cardStyle">
+<input type="text" id="expir" name="expir" [(ngModel)]="ed"  [ngModelOptions]="{standalone: true}" autocomplete="off">
+<input type="text" id="cv" name="cv" [(ngModel)]="cv"  [ngModelOptions]="{standalone: true}" autocomplete="off">
+<input type="text" id="postal" name="postal" [(ngModel)]="postal"  [ngModelOptions]="{standalone: true}" autocomplete="off">
+</div>
+<input class="submitbutton" type="submit" value="pay" (click)="success($event)" >
+
+</form>
+</div>

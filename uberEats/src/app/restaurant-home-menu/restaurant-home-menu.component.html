@@ -1,0 +1,152 @@
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+</head>
+<body>
+    <div class="topnav">
+        <a href="/customer/homepage">Uber<span>Eats</span></a>
+        <div class = "location" (click) = "test()">
+            <i class="fas fa-location-arrow"></i>
+            <span>&nbsp; {{location}}</span>
+        </div>
+        <!-- <div class="search-container">
+            <form >
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div> -->
+        <a href="/home" class = "sign">Sign Out</a>
+    </div>
+        
+
+    <div class = "img_place">
+        <div class="restaurant_info">
+
+        <div class="rest_content">
+                <div class = "name">
+                        {{name}}
+                      
+                    </div>
+                    <div class = 'price_rating'>
+                        <span>
+                            &nbsp;&nbsp;
+                            {{price}}&nbsp;•&nbsp;{{type_of_food}}&nbsp;&nbsp;
+                            
+                        </span>
+                    </div>
+                    <div class = rating_time_deliveryfee>
+                        <span>
+                            
+                            &nbsp;&nbsp;{{no_rating}} 
+                            &nbsp;&nbsp;<i class="fas fa-star"></i>&nbsp;{{rating}}
+                            &nbsp;
+                        </span>
+                    </div>
+        </div>
+
+        </div>
+    </div>
+    <div class="menu_nav">
+        <ul>
+            <li *ngFor="let item of menu_data" (click) = "scroll(item._id)">{{item._id}}</li>
+            <li (click) = "toggleDisplay()"class = "order">
+                <i class="fas fa-shopping-basket"></i>
+            </li>   
+        </ul>
+        <!-- <ul>
+            <li (click) = "scroll(1)">Home</li>
+            <li (click) = "scroll(2)">News</li>
+            <li (click) = "scroll(3)">Contact</li>
+            
+        </ul> -->
+        <div class="alert_box" *ngIf ="!isAlert">
+            <div (click)="toggleAlert()"class="cross">
+                    <i class="fas fa-times" style="color: black;"></i>
+            </div>
+            <p>
+                Oops!.. Looks like the item isnt available rightnow
+            </p>
+            
+        </div>
+        <div class="checkout-div" *ngIf = "!isShow">
+                <div (click)="toggleDisplay()"class="cross">
+                    <i class="fas fa-times" style="color: black;"></i>
+                </div>
+                <div class="title">
+                    Your order
+                    <div class = "title_rest_name">
+                        From <span style="color: #5FB709;">{{name}}</span>
+                    </div>
+                    <div class="orders" *ngFor ="let order of cart_data">
+                        <span class="order_name">
+                            {{order.name}}
+                        </span>
+                        <span class="order_price">
+                            {{order.price}}
+                        </span>
+                        <span class = "order_remove" (click) = "removeItem(order)">
+                            <i class="fas fa-minus"></i>
+                        </span>
+                    </div>
+                    <div class = "next-checkout" (click)="checkoutButton()" >
+                        <span class="total_itms">
+                            {{cart_data.length}}
+                        </span>
+                        <span>
+                            checkout
+                        </span>
+                        <span class="total_amm" >
+                            {{total_price}}
+                        </span>
+                    </div>
+        
+                </div>
+            </div>
+    </div>
+    
+    
+    
+    
+    <div class="menu_div">
+        <div class="menu_items">
+            <div *ngFor="let item of menu_data" id = {{item._id}}>
+                <ul>
+                    <h2>{{item._id}}</h2>
+                    <li *ngFor = "let dish of item.menu">
+                        <div class="item">
+                            <div class = "left">
+                                <div class="item_name">
+                                    {{dish["name"]}}
+                                </div>
+                                <div class = "item_desc">
+                                    {{dish["description"]}}
+                                </div>
+                                <div class="item_price">
+                                    ${{dish["price"]}}
+                                </div>
+                                <div class = "add_rmv">
+                                    <i class="fas fa-cart-plus"(click)= addItem(dish)></i>
+                                    
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div class="item_img">
+                                    <img src= "{{dish['img']}}" >
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+
+                </ul>
+            </div>
+            
+            
+
+        </div>
+    </div>
+    
+
+    
+        
+
+</body>
