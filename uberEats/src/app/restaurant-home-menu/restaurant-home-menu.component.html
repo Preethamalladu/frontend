@@ -1,7 +1,9 @@
 <head>
+    <!-- importing font awsome for fonts -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
 </head>
 <body>
+    <!--  designing the top navigation bar layout -->
     <div class="topnav">
         <a href="/customer/homepage">Uber<span>Eats</span></a>
         <div class = "location" (click) = "test()">
@@ -14,11 +16,13 @@
             <button type="submit"><i class="fa fa-search"></i></button>
             </form>
         </div> -->
-        <div class = "sign" (click)="signout()">Sign Out</div>
+        <!-- by clicking on this div, it will signout the user,  and send them to homepage -->
+        <div class = "sign" (click)="signout()">Sign Out</div> 
+        <!-- navigate to order history it is specific to user -->
         <div class = "sign" (click)="orderHistory()">orderHistory</div>
     </div>
         
-
+    <!-- desgigin the photo frame -->
     <div class = "img_place">
         <div class="restaurant_info">
 
@@ -48,6 +52,7 @@
     </div>
     <div class="menu_nav">
         <ul>
+            <!-- dynamically loading the data using ngFor and a array of objects -->
             <li *ngFor="let item of menu_data" (click) = "scroll(item._id)">{{item._id}}</li>
             <li (click) = "toggleDisplay()"class = "order">
                 <i class="fas fa-shopping-basket"></i>
@@ -59,6 +64,7 @@
             <li (click) = "scroll(3)">Contact</li>
             
         </ul> -->
+        <!-- an alert desgined to let the user know if an item isnt available currently -->
         <div class="alert_box" *ngIf ="!isAlert">
             <div (click)="toggleAlert()"class="cross">
                     <i class="fas fa-times" style="color: black;"></i>
@@ -68,6 +74,7 @@
             </p>
             
         </div>
+        <!-- checkout div to keep track of orders -->
         <div class="checkout-div" *ngIf = "!isShow">
                 <div (click)="toggleDisplay()"class="cross">
                     <i class="fas fa-times" style="color: black;"></i>
