@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
         this.alertService.error('Invalid credentials');
       } else{
         this.authenticationService.setIsLoggedIn();
-        localStorage.setItem('data', data);
+        localStorage.setItem('data', JSON.stringify(data));
         localStorage.setItem('token', data.token);
         this.alertService.success('Login Succesful');
          this.router.navigate(['/customer/homepage']);

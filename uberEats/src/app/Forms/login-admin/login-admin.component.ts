@@ -46,7 +46,7 @@ export class AdminLoginComponent implements OnInit {
         } else {
           //this.adminService.setIsLoggedIn();
           //sessionStorage.setItem('id', data.Id);
-          localStorage.setItem('data', data);
+          localStorage.setItem('data', JSON.stringify(data));
           localStorage.setItem('token', data.token);
           this.alertService.success('Login Succesful');
           this.router.navigate(['/admin/homepage']);
