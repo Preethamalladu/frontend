@@ -19,21 +19,21 @@ export class RestaurantHomeMenuComponent implements OnInit {
           name: "name",
           description: "desc",
           img: "https://picsum.photos/200",
-          price: "10",
+          price: 10,
           isavailable: false
         },
         {
           name: "name",
           description: "desc",
           img: "https://picsum.photos/200",
-          price: "10",
+          price: 10,
           isavailable: false
         },
         {
           name: "name",
           description: "desc",
           img: "https://picsum.photos/200",
-          price: "10",
+          price: 10,
           isavailable: false
         },
       ]
@@ -45,21 +45,21 @@ export class RestaurantHomeMenuComponent implements OnInit {
           name: "name",
           description: "desc",
           img: "https://picsum.photos/200",
-          price: "10",
+          price: 10,
           isavailable: false
         },
         {
           name: "name",
           description: "desc",
           img: "https://picsum.photos/200",
-          price: "10",
+          price: 10,
           isavailable: false
         },
         {
           name: "name",
           description: "desc",
           img: "https://picsum.photos/200",
-          price: "10",
+          price: 10,
           isavailable: false
         },
       ]
@@ -71,21 +71,21 @@ export class RestaurantHomeMenuComponent implements OnInit {
           name: "name",
           description: "desc",
           img: "https://picsum.photos/200",
-          price: "10",
+          price: 10,
           isavailable: false
         },
         {
           name: "name",
           description: "desc",
           img: "https://picsum.photos/200",
-          price: "10",
+          price: 10,
           isavailable: false
         },
         {
           name: "namasdasdsade",
           description: "desc",
           img: "https://picsum.photos/200",
-          price: "10",
+          price: 10,
           isavailable: false
         },
       ]
@@ -94,7 +94,7 @@ export class RestaurantHomeMenuComponent implements OnInit {
   ]
   menu_id = 0;
   cart_data = []
-  total_price = 0
+  total_price = 0.0
   location = "click here to get current location";
   cur_rest;
   name = "";
@@ -113,8 +113,9 @@ export class RestaurantHomeMenuComponent implements OnInit {
       this.cart_data = JSON.parse( localStorage.getItem('order') )
       this.cart_data.forEach(item => {
         this.total_price += item.price;
+        console.log(item);
       });
-      this.total_price = parseFloat(this.total_price.toFixed(2));
+      this.total_price = parseFloat(this.total_price.toFixed(2)) ;
       this.routeSub = this.route.params.subscribe(params => {
        
         this.menu_id = params['id'] //log the value of id
@@ -174,7 +175,7 @@ export class RestaurantHomeMenuComponent implements OnInit {
   addItem(dish){
     this.cart_data.push(dish)
     this.isShow  = false
-    this.total_price +=  dish.price
+    this.total_price +=  dish["price"]
     this.total_price = parseFloat(this.total_price.toFixed(2));
     localStorage.setItem('order', JSON.stringify(this.cart_data))
     
@@ -185,9 +186,13 @@ export class RestaurantHomeMenuComponent implements OnInit {
     if (index > -1) {
       this.cart_data.splice(index, 1);
       this.total_price -= order.price
-      this.total_price = parseFloat(this.total_price.toFixed(4));
+      this.total_price = parseFloat(this.total_price.toFixed(2));
+      localStorage.setItem('order', JSON.stringify(this.cart_data))
+    }else{
+      localStorage.removeItem('order');
+
     }
-    localStorage.setItem('order', JSON.stringify(this.cart_data))
+    
   }
 
   checkoutButton(){
