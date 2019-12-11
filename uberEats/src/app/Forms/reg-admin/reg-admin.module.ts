@@ -20,6 +20,7 @@ import { AlertService } from '../../Alert.service';
     TranslateModule,
     NgbModule,
     FormsModule,
+    RegisterAdminRoutingModule
     //FormBuilder,
 
   ],

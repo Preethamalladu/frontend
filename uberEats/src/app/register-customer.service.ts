@@ -43,7 +43,7 @@ login(email: string, password: string) {
   }
 
   logout() {
-      sessionStorage.clear();
+    localStorage.clear();
   }
 
   setIsLoggedIn(){

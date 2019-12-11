@@ -4,7 +4,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { CoreModule } from '@app/core';
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
@@ -17,8 +16,7 @@ describe('LoginComponent', () => {
         NgbModule,
         RouterTestingModule,
         TranslateModule.forRoot(),
-        ReactiveFormsModule,
-        CoreModule
+        ReactiveFormsModule
       ],
       declarations: [LoginComponent]
     })
