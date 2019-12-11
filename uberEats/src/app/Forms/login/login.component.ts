@@ -13,14 +13,13 @@ import { AlertService } from '../..//Alert.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   customer = new Customer();
-  loading = false;
   returnUrl: string;
   results;
   submitted = false;
 
   constructor( private authenticationService : RegisterCustomerService,
                private route: ActivatedRoute,
-               private router: Router, private formBuilder: FormBuilder) {
+               private router: Router, private formBuilder: FormBuilder, private alertService : AlertService) {
                 this.loginForm = this.formBuilder.group({
                   username: ['', Validators.required],
                   password: ['', [Validators.required, Validators.minLength(6)]]
@@ -39,19 +38,21 @@ export class LoginComponent implements OnInit {
 
   // tslint:disable-next-line:one-line
   onSubmit(){
-    this.loading = true;
     let email = this.loginForm.value.username;
     let password = this.loginForm.value.password;
+    if(email == "" || password == ""){
+      this.alertService.error('Invalid credentials');
+    }
     this.authenticationService.login(email, password)
     .subscribe((data: any) =>{
       console.log(data);
-      if (data == null){
-        alert("Invalid username or password");
+      if (!data.token){
+        this.alertService.error('Invalid credentials');
       } else{
         this.authenticationService.setIsLoggedIn();
         localStorage.setItem('data', data);
         localStorage.setItem('token', data.token);
-         alert('Login successful');
+        this.alertService.success('Login Succesful');
          this.router.navigate(['/customer/homepage']);
       }
     },

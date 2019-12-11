@@ -5,9 +5,9 @@
 }
 label {
   /* Other styling... */
-  text-align: right;
-  clear: both;
-  float:left;
+  //text-align: right;
+  //clear: both;
+  //float:left;
   margin-right:15px;
 }
 /*.form-signin {
@@ -76,6 +76,13 @@ button[type="Submit"] {
 form {
   margin-top: 10%;
 }
-label {
-  //width:100%;
+.container {
+  width: 40%;
+  min-height: 50%;
+  position: absolute;
+  top: 15%;
+  left: 30%;
+
+  background-color: white;
+
 }

@@ -26,10 +26,10 @@ export class RegisterLoginComponent implements OnInit {
                   username: ['', Validators.required],
                   email: ['', Validators.required],
                   password: ['', [Validators.required, Validators.minLength(6)]],
-                  cardName: ['', Validators.required],
-                  exp: ['', Validators.required],
-                  cv: ['', Validators.required],
-                  postal: ['', Validators.required],
+                  cardName: ['', ],
+                  exp: ['', ],
+                  cv: ['', ],
+                  postal: ['', ],
               });
 
               }
@@ -45,6 +45,7 @@ export class RegisterLoginComponent implements OnInit {
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
+       this.alertService.error("Invalid Form" );
         return;
     }
     this.customer.name = this.registerForm.value.name;
