@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RegisterCustomerService } from '@app/core/register-customer.service';
+import { RegisterCustomerService } from '../../register-customer.service';
 import { Customer } from '../Model/customer.component';
 import { Router } from '@angular/router';
 import { AlertService } from '@app/core/Alert.service';
