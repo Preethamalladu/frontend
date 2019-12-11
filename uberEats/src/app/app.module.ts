@@ -22,10 +22,6 @@ import { RestaurantHomeMenuComponent } from './restaurant-home-menu/restaurant-h
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    // CustomerProfileComponent,
-    // RestaurantProfileComponent,
-    // CustomerProfileComponent,
-    // RestaurantProfileComponent,
     OrdersComponent,
   HomepageCustomerComponent,
     RestaurantComponent,
@@ -44,12 +40,6 @@ import { RestaurantHomeMenuComponent } from './restaurant-home-menu/restaurant-h
     AppRoutingModule,
   HttpClientModule,
     RouterModule.forRoot([
-      
-      {
-        path: 'profile/restaurant/:customerID', 
-        component: RestaurantProfileComponent,
-        pathMatch:"full"
-      },
       {
         path: 'orderSummary', 
         component: OrdersComponent,
